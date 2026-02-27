@@ -1,89 +1,524 @@
-<!DOCTYPE html>
+import { useState, useCallback } from "react";
+
+const HTML_CONTENT = `<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Аналитический портал · MVV</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Документы Василия</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--card:#12121a;--card2:#1a1a25;--border:#2a2a3a;--text:#e0e0e8;--text2:#9090a8;--accent:#4dbbeb;--accent2:#7c6cf0;--green:#34d399;--red:#f87171;--orange:#fbbf24}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
-a{text-decoration:none;color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Hero */
-.hero{padding:100px 0 60px;text-align:center;position:relative}
-.hero::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(77,187,235,0.04) 0%,rgba(124,108,240,0.02) 40%,transparent 70%);pointer-events:none}
-.badge{display:inline-block;padding:6px 18px;border:1px solid var(--border);border-radius:100px;font-size:12px;color:var(--accent);margin-bottom:24px;background:rgba(77,187,235,0.05);font-weight:500;letter-spacing:1.5px;text-transform:uppercase}
-.hero h1{font-size:clamp(32px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:16px;letter-spacing:-1px}
-.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:18px;color:var(--text2);max-width:600px;margin:0 auto;font-weight:300}
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --border2: #3a3a50;
+    --text: #e0e0e8;
+    --muted: #9090a8;
+    --blue: #4dbbeb;
+    --purple: #7c6cf0;
+    --green: #34d399;
+    --orange: #fbbf24;
+    --red: #f87171;
+  }
 
-/* Section */
-.section{padding:40px 0 80px}
-.section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;flex-wrap:wrap;gap:12px}
-.section-label{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:600}
-.section h2{font-size:clamp(22px,3.5vw,32px);font-weight:600}
-.page-count{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text2);padding:4px 12px;border:1px solid var(--border);border-radius:100px;background:var(--card)}
+  html { scroll-behavior: smooth; }
 
-/* Pages grid */
-#pages-grid{display:flex;flex-direction:column;gap:12px}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-.page-card{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;transition:all 0.3s ease;cursor:pointer}
-.page-card:hover{border-color:var(--accent);transform:translateX(4px);background:linear-gradient(135deg,rgba(77,187,235,0.03),rgba(124,108,240,0.03))}
-.page-icon{font-size:36px;flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--card2);border-radius:12px}
-.page-content{flex:1;min-width:0}
-.page-title{font-size:17px;font-weight:600;margin-bottom:4px}
-.page-desc{font-size:14px;color:var(--text2);line-height:1.5}
-.page-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);margin-top:6px;opacity:0.6}
-.page-arrow{font-size:24px;color:var(--accent);opacity:0;transition:opacity 0.3s;flex-shrink:0}
-.page-card:hover .page-arrow{opacity:1}
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(77,187,235,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77,187,235,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Empty state */
-.empty{text-align:center;padding:80px 20px;color:var(--text2)}
-.empty .icon{font-size:48px;margin-bottom:16px;opacity:0.5}
-.empty p{font-size:15px;max-width:400px;margin:0 auto}
+  /* Ambient glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 60vh;
+    background: radial-gradient(ellipse, rgba(124,108,240,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Footer */
-.footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--text2);font-size:13px;margin-top:40px}
-.footer a{color:var(--accent)}
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-@media(max-width:640px){
-.page-card{padding:16px 20px;gap:14px}
-.page-icon{width:44px;height:44px;font-size:28px}
-.page-arrow{display:none}
-}
+  /* ── HEADER ── */
+  header {
+    padding: 60px 0 0;
+    text-align: center;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(77,187,235,0.08);
+    border: 1px solid rgba(77,187,235,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .header-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 8px var(--blue);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 8vw, 88px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-title .name {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--blue) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite, fadeUp 0.6s 0.1s ease both;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.6;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--blue);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .divider-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── PAGES GRID ── */
+  #pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 80px;
+  }
+
+  .page-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .page-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(77,187,235,0.04), rgba(124,108,240,0.04));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .page-card:hover {
+    border-color: rgba(77,187,235,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(77,187,235,0.08);
+  }
+
+  .page-card:hover::before { opacity: 1; }
+
+  .page-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .page-card:hover .page-icon { transform: scale(1.1) rotate(-5deg); }
+
+  .page-content { flex: 1; min-width: 0; }
+
+  .page-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .page-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(77,187,235,0.6);
+    letter-spacing: 0.05em;
+  }
+
+  .page-arrow {
+    font-size: 18px;
+    color: var(--border2);
+    flex-shrink: 0;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .page-card:hover .page-arrow {
+    color: var(--blue);
+    transform: translateX(4px);
+  }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+  }
+
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state p { font-size: 15px; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border2);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Stagger cards ── */
+  #pages-grid .page-card:nth-child(1) { animation-delay: 0.4s; }
+  #pages-grid .page-card:nth-child(2) { animation-delay: 0.5s; }
+  #pages-grid .page-card:nth-child(3) { animation-delay: 0.6s; }
+  #pages-grid .page-card:nth-child(4) { animation-delay: 0.7s; }
+  #pages-grid .page-card:nth-child(5) { animation-delay: 0.8s; }
+  #pages-grid .page-card:nth-child(6) { animation-delay: 0.9s; }
 </style>
 </head>
 <body>
-
 <div class="container">
+  <header>
+    <div class="header-badge">mvvcom-dev · pages_vass</div>
+    <h1 class="hero-title">Документы<br><span class="name">Василия</span></h1>
+    <p class="hero-subtitle">Рабочие документы, структуры и аналитика — всё в одном месте</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="page-count">1</span>
+        <div class="hero-stat-label">документ</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">2026</span>
+        <div class="hero-stat-label">год</div>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">∞</span>
+        <div class="hero-stat-label">в работе</div>
+      </div>
+    </div>
+  </header>
 
-<section class="hero">
-<div class="badge">MVV Analytics</div>
-<h1>Аналитический<br><span>портал</span></h1>
-<p>Стратегические материалы, оргструктуры и аналитика для принятия решений</p>
-</section>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-label">все страницы</span>
+    <div class="divider-line"></div>
+  </div>
 
-<section class="section">
-<div class="section-header">
-<div>
-<div class="section-label">Материалы</div>
-<h2>Опубликованные страницы</h2>
+  <div id="pages-grid">
+<!-- PAGE: pmo-structure.html -->
+<a href="pmo-structure.html" class="page-card">
+<div class="page-icon">🏥</div>
+<div class="page-content">
+<div class="page-title">Оргструктура клиентского департамента</div>
+<div class="page-desc">Системная трансформация МедКонтакт: роли, KPI и план на 90 дней</div>
+<div class="page-meta">28 фев 2026</div>
 </div>
+<div class="page-arrow">→</div>
+</a>
+<!-- /PAGE: pmo-structure.html -->
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 Василий · pages_vass</div>
+    <div class="footer-right">
+      <span>GitHub Pages</span>
+      <div class="footer-dot"></div>
+      <span>автообновление</span>
+    </div>
+  </footer>
 </div>
 
-<div id="pages-grid">
-</div>
-
-</section>
-
-<footer class="footer">
-MVV · Аналитический портал · 2026
-</footer>
-
-</div>
-
+<script>
+  // Update page count dynamically
+  const count = document.querySelectorAll('#pages-grid .page-card').length;
+  document.getElementById('page-count').textContent = count;
+</script>
 </body>
-</html>
+</html>`;
+
+const PAGE_INFO = {
+  filename: "index.html",
+  title: "Документы Василия",
+  description: "Главная страница портала",
+  icon: "🏠",
+  date: "28 фев 2026",
+};
+
+const CONFIG = {
+  owner: "mvvcom-dev",
+  repo: "pages_vass",
+};
+
+async function ghGet(path, token) {
+  const res = await fetch(
+    `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,
+    { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+  );
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function ghPut(path, content, sha, token, msg) {
+  const body = { message: msg, content: btoa(unescape(encodeURIComponent(content))) };
+  if (sha) body.sha = sha;
+  const res = await fetch(
+    `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${path}`,
+    {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }
+  );
+  if (!res.ok) throw new Error((await res.json()).message);
+  return res.json();
+}
+
+export default function Publisher() {
+  const [token, setToken] = useState("");
+  const [status, setStatus] = useState(null);
+  const [message, setMessage] = useState("");
+  const [step, setStep] = useState("");
+  const [pageUrl, setPageUrl] = useState("");
+
+  const publish = useCallback(async () => {
+    if (!token.trim()) { setStatus("error"); setMessage("Введите GitHub токен"); return; }
+    setStatus("loading");
+    try {
+      setStep("Публикация index.html...");
+      const existing = await ghGet("index.html", token);
+      await ghPut("index.html", HTML_CONTENT, existing?.sha, token,
+        existing ? "redesign: new index.html" : "add index.html");
+
+      const base = `https://${CONFIG.owner}.github.io/${CONFIG.repo}`;
+      setPageUrl(`${base}/`);
+      setStatus("success");
+      setMessage("Опубликовано!");
+      setStep("");
+    } catch (err) {
+      setStatus("error");
+      setMessage(err.message);
+      setStep("");
+    }
+  }, [token]);
+
+  return (
+    <div style={{ background: "#0a0a0f", color: "#e0e0e8", minHeight: "100vh", fontFamily: "system-ui,sans-serif", padding: 24 }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <h2 style={{ color: "#4dbbeb", marginBottom: 4, fontSize: 20 }}>🏠 Главная страница — Документы Василия</h2>
+        <p style={{ color: "#9090a8", fontSize: 13, marginBottom: 20, fontFamily: "monospace" }}>index.html · portal redesign</p>
+
+        <div style={{ marginBottom: 16 }}>
+          <label style={{ fontSize: 13, color: "#9090a8", display: "block", marginBottom: 4 }}>GitHub Token:</label>
+          <input
+            type="password"
+            value={token}
+            onChange={e => setToken(e.target.value)}
+            placeholder="github_pat_..."
+            style={{ width: "100%", padding: "10px 14px", background: "#1a1a25", border: "1px solid #2a2a3a", borderRadius: 8, color: "#e0e0e8", fontSize: 14, fontFamily: "monospace" }}
+          />
+        </div>
+
+        <iframe
+          srcDoc={HTML_CONTENT}
+          style={{ width: "100%", height: 560, border: "1px solid #2a2a3a", borderRadius: 12, marginBottom: 16 }}
+        />
+
+        <button
+          onClick={publish}
+          disabled={status === "loading"}
+          style={{ width: "100%", padding: 16, background: status === "loading" ? "#2a2a3a" : "linear-gradient(135deg,#4dbbeb,#7c6cf0)", border: "none", borderRadius: 12, color: "#fff", fontSize: 16, fontWeight: 600, cursor: "pointer", marginBottom: 16 }}
+        >
+          {status === "loading" ? `⏳ ${step}` : "🚀 Опубликовать index.html"}
+        </button>
+
+        {status === "success" && (
+          <div style={{ padding: 16, background: "rgba(52,211,153,0.08)", border: "1px solid #34d399", borderRadius: 12 }}>
+            <div style={{ color: "#34d399", fontWeight: 600, marginBottom: 8 }}>✅ {message}</div>
+            <div style={{ fontSize: 13, color: "#9090a8" }}>
+              Главная: <a href={pageUrl} target="_blank" style={{ color: "#4dbbeb", fontFamily: "monospace" }}>{pageUrl}</a>
+            </div>
+            <div style={{ fontSize: 12, color: "#9090a8", marginTop: 8, opacity: 0.7 }}>
+              GitHub Pages обновляется ~1–2 минуты после публикации
+            </div>
+          </div>
+        )}
+        {status === "error" && (
+          <div style={{ padding: 16, background: "rgba(248,113,113,0.08)", border: "1px solid #f87171", borderRadius: 12 }}>
+            <div style={{ color: "#f87171", fontWeight: 600 }}>❌ {message}</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
