@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Наш продукт · Patient Access OS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#080a0f;--bg2:#0d1017;--surface:#12161f;--border:rgba(255,255,255,0.07);--accent:#5b8eff;--accent2:#a78bfa;--accent3:#34d399;--text:#e8ecf0;--muted:#6b7a8d}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(8,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+    .nav-tag{font-size:12px;color:var(--muted)}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden}
+    .hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(91,142,255,.13) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-60%);pointer-events:none}
+    .hero-glow2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(167,139,250,.08) 0%,transparent 70%);bottom:10%;right:15%;pointer-events:none}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(91,142,255,.1);border:1px solid rgba(91,142,255,.25);border-radius:100px;padding:6px 18px;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:36px}
+    .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+    h1{font-size:clamp(44px,7.5vw,92px);font-weight:800;line-height:1.03;letter-spacing:-.04em;max-width:900px}
+    h1 em,h2 em,.phrase-line em{font-style:normal;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{margin-top:28px;font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:580px;line-height:1.65}
+    .hero-cta{margin-top:52px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+    .btn-primary:hover{background:#4a7bf0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,142,255,.3)}
+    .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:14px 28px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+    .btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+    .marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;background:rgba(255,255,255,.015)}
+    .marquee{display:flex;gap:60px;animation:marquee 24s linear infinite;white-space:nowrap}
+    .marquee-item{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;flex-shrink:0}
+    .marquee-sep{color:rgba(91,142,255,.4)}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    section{position:relative;z-index:1}
+    .container{max-width:1080px;margin:0 auto;padding:0 24px}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+    .section-title{font-size:clamp(30px,4.5vw,52px);font-weight:800;letter-spacing:-.035em;line-height:1.1}
+    .section-desc{margin-top:16px;font-size:16px;color:var(--muted);max-width:520px;line-height:1.75}
+    .divider{height:1px;background:var(--border);max-width:1080px;margin:0 auto}
+    .def-section{padding:130px 0}
+    .def-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .def-pillars{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;overflow:hidden}
+    .def-pillar{padding:24px 28px;background:var(--surface);display:flex;gap:16px;align-items:flex-start;transition:background .2s}
+    .def-pillar:hover{background:#181e2c}
+    .def-pillar+.def-pillar{border-top:1px solid var(--border)}
+    .pillar-num{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.08em;margin-top:2px;flex-shrink:0}
+    .pillar-text{font-size:14px;color:rgba(232,236,240,.85);line-height:1.65}
+    .pillar-text strong{color:#fff;font-weight:600}
+    .product-section{padding:130px 0;background:var(--bg2)}
+    .product-grid{margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:20px;overflow:hidden}
+    .product-card{background:var(--surface);padding:36px 32px;transition:background .25s}
+    .product-card:hover{background:#161b28}
+    .card-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px}
+    .card-icon.blue{background:rgba(91,142,255,.12)}
+    .card-icon.purple{background:rgba(167,139,250,.12)}
+    .card-icon.green{background:rgba(52,211,153,.12)}
+    .card-sub{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+    .card-title{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:12px}
+    .card-text{font-size:14px;color:var(--muted);line-height:1.72}
+    .card-tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px}
+    .tag{font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--border)}
+    .phrase-section{padding:140px 24px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+    .phrase-glow{position:absolute;width:800px;height:500px;background:radial-gradient(ellipse,rgba(91,142,255,.1) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+    .phrase-inner{position:relative;max-width:860px}
+    .phrase-line{font-size:clamp(22px,3.8vw,44px);font-weight:700;letter-spacing:-.035em;line-height:1.28;color:rgba(255,255,255,.88)}
+    .phrase-context{margin-top:36px;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+    .revenue-section{padding:130px 0}
+    .revenue-grid{margin-top:64px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .rev-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:border-color .2s,background .2s}
+    .rev-card:hover{border-color:rgba(91,142,255,.25);background:#13172080}
+    .rev-num{font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+    .rev-title{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:10px}
+    .rev-text{font-size:14px;color:var(--muted);line-height:1.72}
+    .notdoing-section{padding:130px 0;background:var(--bg2)}
+    .notdoing-grid{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
+    .do-list,.dont-list{display:flex;flex-direction:column;gap:14px}
+    .do-item,.dont-item{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.65}
+    .do-item{color:rgba(232,236,240,.9)}
+    .dont-item{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(239,68,68,.4)}
+    .check{color:var(--accent3);flex-shrink:0;margin-top:1px;font-weight:700}
+    .cross{color:#ef4444;flex-shrink:0;margin-top:1px;font-weight:700}
+    .list-head{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+    .list-head.green{color:var(--accent3)}
+    .list-head.red{color:#ef4444}
+    footer{padding:56px 24px;border-top:1px solid var(--border);text-align:center}
+    .footer-brand{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    .footer-text{font-size:13px;color:var(--muted)}
+    @media(max-width:768px){nav{padding:16px 20px}.nav-tag{display:none}.def-inner,.product-grid,.revenue-grid,.notdoing-grid{grid-template-columns:1fr}.product-grid{background:transparent;gap:14px}.product-card{border-radius:14px;border:1px solid var(--border)}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Patient Access OS</div>
+  <div class="nav-tag">Внутренний гайд по продукту · 2026</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div class="hero-badge">Для команды</div>
+  <h1>Мы не строим<br /><em>чат-ботов.</em></h1>
+  <p class="hero-sub">Мы строим инфраструктуру, которая управляет пациентским потоком — от первого обращения до измеримого результата.</p>
+  <div class="hero-cta">
+    <a href="#product" class="btn-primary">Что мы строим →</a>
+    <a href="#filter" class="btn-ghost">Наш фильтр решений</a>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="marquee-item">Patient Access</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Front-Office Automation</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Omnichannel</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Care Gap Closure</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Outreach Engine</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Снижение нагрузки регистратуры</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Измеримый эффект</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">ПМСП / Клиники</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Patient Access</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Front-Office Automation</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Omnichannel</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Care Gap Closure</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Outreach Engine</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Снижение нагрузки регистратуры</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Измеримый эффект</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">ПМСП / Клиники</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<section class="def-section" id="product">
+  <div class="container">
+    <div class="def-inner">
+      <div>
+        <div class="section-label">Наш продукт</div>
+        <h2 class="section-title">Единая платформа<br /><em>управления доступом</em></h2>
+        <p class="section-desc">«Patient Access & Front-Office Automation» — не голосовой робот и не чат-бот. Это платформа, которая доводит обращение до результата и снимает нагрузку с регистратуры.</p>
+        <p class="section-desc" style="margin-top:14px">Ключевое отличие: мы продаём <strong style="color:#fff">управляемый поток + процессы + интеграции + измеримый эффект</strong>, а не минуты разговора.</p>
+      </div>
+      <div class="def-pillars">
+        <div class="def-pillar"><div class="pillar-num">01</div><div class="pillar-text"><strong>Принимает и завершает обращения</strong> — не болтать, а довести до результата: записать, подтвердить, направить.</div></div>
+        <div class="def-pillar"><div class="pillar-num">02</div><div class="pillar-text"><strong>Снимает нагрузку с регистратуры</strong> — типовые задачи уходят к AI, операторы занимаются сложными случаями.</div></div>
+        <div class="def-pillar"><div class="pillar-num">03</div><div class="pillar-text"><strong>Закрывает care gaps</strong> — скрининги, диспансеризация, профосмотры, контроль явки под KPI государства.</div></div>
+        <div class="def-pillar"><div class="pillar-num">04</div><div class="pillar-text"><strong>Омниканал</strong> — голос + мессенджеры + терминал + оператор. Один процесс во всех точках контакта.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="product-section">
+  <div class="container">
+    <div class="section-label">Что мы строим</div>
+    <h2 class="section-title">Три <em>продуктовых модуля</em></h2>
+    <p class="section-desc">Всё что попадает в бэклог — усиливает одну из этих цепочек. Остальное в партнёрство или аут.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="card-icon blue">🏥</div>
+        <div class="card-sub">Модуль 1</div>
+        <div class="card-title">Patient Access OS</div>
+        <div class="card-text">Запись, перенос, подтверждение, сбор данных до визита, снижение пропусков. AI-агент не просто отвечает — он завершает транзакцию. Разгружает регистратуру на типовом потоке.</div>
+        <div class="card-tags"><span class="tag">Запись</span><span class="tag">Подтверждения</span><span class="tag">Pre-visit</span><span class="tag">No-show ↓</span></div>
+      </div>
+      <div class="product-card">
+        <div class="card-icon purple">📡</div>
+        <div class="card-sub">Модуль 2</div>
+        <div class="card-title">Outreach Engine</div>
+        <div class="card-text">Движок кампаний под KPI: сегментация → каскад каналов → запись → контроль явки → повторный контакт. Превращает охват в деньги и управленческие показатели.</div>
+        <div class="card-tags"><span class="tag">Скрининги</span><span class="tag">Диспансеризация</span><span class="tag">Каскад каналов</span><span class="tag">KPI</span></div>
+      </div>
+      <div class="product-card">
+        <div class="card-icon green">🖥️</div>
+        <div class="card-sub">Модуль 3</div>
+        <div class="card-title">Self-Service Point</div>
+        <div class="card-text">Терминал/киоск — не железка, а точка входа в тот же процесс: идентификация → причина → маршрутизация → талон → синхронизация с МИС. Один контур, не отдельный продукт.</div>
+        <div class="card-tags"><span class="tag">Киоск</span><span class="tag">МИС-интеграция</span><span class="tag">Маршрутизация</span><span class="tag">Self-service</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="phrase-section" id="filter">
+  <div class="phrase-glow"></div>
+  <div class="phrase-inner">
+    <div class="section-label" style="display:flex;justify-content:center;margin-bottom:36px">Фильтр для всей команды</div>
+    <div class="phrase-line">«Мы продаём не чат-ботов и не телефонию.<br />Мы продаём <em>управляемый пациентский поток</em>:<br />обращение → действие → результат<br />для ПМСП/клиник, в омниканале,<br />с <em>измеримым эффектом</em> по доступу и нагрузке.»</div>
+    <div class="phrase-context">Если задача не усиливает эту цепочку — она не наша</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="revenue-section">
+  <div class="container">
+    <div class="section-label">Как зарабатываем</div>
+    <h2 class="section-title">Модель, которая<br /><em>не съедает маржу</em></h2>
+    <p class="section-desc">Уходим от «проектной истории про робота» к стабильному контракту за результат и объём.</p>
+    <div class="revenue-grid">
+      <div class="rev-card"><div class="rev-num">Основа</div><div class="rev-title">SaaS-подписка за организацию</div><div class="rev-text">Подписка + доп. модули: Outreach, Kiosk, Quality/NPS, Voice/GenAI, аналитика. Предсказуемый ARR, не зависящий от числа звонков.</div></div>
+      <div class="rev-card"><div class="rev-num">Вторично</div><div class="rev-title">Usage-слой (минуты / диалоги)</div><div class="rev-text">Дополнительный чек за объём — второй слой, а не единственный способ зарабатывать. Позволяет расти вместе с клиентом без переговоров о цене.</div></div>
+      <div class="rev-card"><div class="rev-num">Стандарт</div><div class="rev-title">Пакеты внедрения Bronze / Silver / Gold</div><div class="rev-text">Интеграции и внедрение — не индивидуальные проекты, а фиксированные пакеты. Иначе это съедает маржу и масштабируемость.</div></div>
+      <div class="rev-card"><div class="rev-num">Осторожно</div><div class="rev-title">Performance fee только за наши метрики</div><div class="rev-text">Часть оплаты за результат — только на тех показателях, которые мы реально контролируем: явка, охват, снижение нагрузки. Иначе токсично.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="notdoing-section">
+  <div class="container">
+    <div class="section-label">Правила 2026</div>
+    <h2 class="section-title">Что мы делаем —<br />и что <em>точно не делаем</em></h2>
+    <div class="notdoing-grid">
+      <div>
+        <div class="list-head green">✓ Делаем</div>
+        <div class="do-list">
+          <div class="do-item"><span class="check">✓</span> Автоматизируем patient access и front-office — запись, доступ, outreach, pre-visit</div>
+          <div class="do-item"><span class="check">✓</span> Строим омниканальные процессы: один поток в голосе, мессенджерах и терминале</div>
+          <div class="do-item"><span class="check">✓</span> Измеряем эффект в единицах клиента — явка, нагрузка, охват скрининга</div>
+          <div class="do-item"><span class="check">✓</span> Продаём подписку за организацию + пакетное внедрение</div>
+          <div class="do-item"><span class="check">✓</span> Используем голос как один из каналов, а не как продукт</div>
+          <div class="do-item"><span class="check">✓</span> Закрываем care gaps под KPI государства и страховщика</div>
+        </div>
+      </div>
+      <div>
+        <div class="list-head red">✕ Не делаем</div>
+        <div class="dont-list">
+          <div class="dont-item"><span class="cross">✕</span> Продаём «чат-бот» или «голосовой робот» как отдельный продукт</div>
+          <div class="dont-item"><span class="cross">✕</span> Берём проекты без интеграции в реальный процесс клиента</div>
+          <div class="dont-item"><span class="cross">✕</span> Считаем ценность в минутах и дозвонах</div>
+          <div class="dont-item"><span class="cross">✕</span> Делаем индивидуальные «эксклюзивные» внедрения без стандарта</div>
+          <div class="dont-item"><span class="cross">✕</span> Берём performance fee за метрики вне нашего контроля</div>
+          <div class="dont-item"><span class="cross">✕</span> Распыляемся на рынки вне ПМСП/клиник без проверенного PMF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Patient Access OS</div>
+  <div class="footer-text">Внутренний документ команды · 2026 · Не для публикации</div>
+</footer>
+
+</body>
+</html>
