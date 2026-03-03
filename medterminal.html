@@ -1,3501 +1,389 @@
 <!DOCTYPE html>
-<html> 
+
+<html lang="ru">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="generator" content="RocketCake">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="medterminal_html.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Инвест-пейджер: Медицинские терминалы · MedContact AI · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700;800&amp;family=Syne:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0f17;
+  --bg2:#0f1626;
+  --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.10);
+  --border2:rgba(255,255,255,.16);
+  --text:rgba(255,255,255,.88);
+  --muted:rgba(255,255,255,.62);
+  --muted2:rgba(255,255,255,.52);
+  --gold:#d4a843;
+  --gold2:rgba(212,168,67,.22);
+  --shadow:0 18px 60px rgba(0,0,0,.55);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1400px 800px at 70% -20%, rgba(212,168,67,.22), transparent 55%),
+radial-gradient(900px 600px at -10% 20%, rgba(80,156,255,.18), transparent 60%),
+linear-gradient(180deg,var(--bg), #070a10 70%); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+a{color:inherit}
+.container{max-width:1080px;margin:0 auto;padding:28px 22px 56px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:.01em;color:rgba(255,255,255,.92)}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,168,67,.3);padding:5px 14px;border-radius:20px;background:rgba(212,168,67,.08);color:rgba(255,255,255,.86);font-size:12px}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;border:1px solid var(--border);background:rgba(255,255,255,.02);color:rgba(255,255,255,.92);padding:10px 14px;border-radius:12px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+.btn:hover{border-color:rgba(212,168,67,.35);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg, rgba(212,168,67,.28), rgba(212,168,67,.10));border-color:rgba(212,168,67,.45)}
+.btn.secondary{border-color:rgba(80,156,255,.25)}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card .inner{padding:22px}
+.hero h1{font-family:"IBM Plex Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:38px;line-height:1.15;letter-spacing:-.02em;margin:0 0 10px}
+.hero p{margin:0 0 14px;color:var(--muted);line-height:1.6;font-size:14px}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.kpi{padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.02);min-width:152px}
+.kpi .t{font-size:11px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.kpi .v{font-weight:750;font-size:18px}
+.side .title{font-family:"IBM Plex Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:16px;font-weight:800;letter-spacing:.02em;margin:0 0 10px}
+.side .small{color:var(--muted);font-size:13px;line-height:1.6}
+.photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-bottom:1px solid var(--border)}
+.section{margin-top:18px}
+.section h2{font-family:"IBM Plex Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:18px;letter-spacing:-.01em;margin:0 0 10px}
+.section p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+.list{margin:10px 0 0;padding:0;list-style:none}
+.list li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.list li:last-child{border-bottom:none}
+.dot{width:8px;height:8px;border-radius:8px;background:rgba(212,168,67,.9);margin-top:6px;flex:0 0 auto}
+.muted{color:var(--muted)}
+.tbl{width:100%;border-collapse:collapse;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+.tbl th,.tbl td{padding:12px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+.tbl th{color:rgba(255,255,255,.82);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.03)}
+.tbl tr:last-child td{border-bottom:none}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.02);font-size:12px;color:rgba(255,255,255,.82)}
+.callout{padding:16px 16px;border-radius:16px;border:1px solid rgba(212,168,67,.32);background:linear-gradient(135deg, rgba(212,168,67,.18), rgba(255,255,255,.02));}
+.callout h3{margin:0 0 6px;font-family:"IBM Plex Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;font-size:15px;letter-spacing:-.01em}
+.callout p{margin:0;color:rgba(255,255,255,.72);line-height:1.65;font-size:13px}
+.footer{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:rgba(255,255,255,.55);font-size:12px}
+hr.sep{border:0;border-top:1px solid rgba(255,255,255,.08);margin:16px 0}
+.stack{display:flex;flex-direction:column;gap:12px}
+.f-row{display:flex;gap:12px;flex-wrap:wrap}
+.f-card{flex:1 1 180px;min-width:180px;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.02);padding:14px}
+.f-card .lbl{font-size:11px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.f-card .num{font-size:22px;font-weight:850}
+.f-card .sub{font-size:12px;color:rgba(255,255,255,.70);margin-top:4px;line-height:1.5}
+kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;padding:2px 6px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+</style>
 </head>
 <body>
-<div class="textstyle1">
-  <div id="container_e4bf9ac">
-    <div class="textstyle1">
-      <span class="textstyle2">M</span>
-      </div>
+<div class="container">
+
+  <div class="topbar">
+    <div class="brand">
+      <span class="pill">Investor Page · Terminals</span>
+      <span>MedContact AI</span>
     </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_25ee779">
-    <div class="textstyle1">
-      <span class="textstyle4">MedContact AI</span>
-      </div>
+    <div class="nav">
+      <a class="btn primary" href="#cta">Request deck</a>
+      <a class="btn secondary" href="#cta">Book 30-min call</a>
     </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_798910f0">
-    <div class="textstyle1">
-      <span class="textstyle5">by AC Solutions</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4915d68c">
-    <div class="textstyle1">
-      <span class="textstyle6">CONFIDENTIAL · 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_41df46e">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_46b0c69c">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_2aae4aae">
-    <div class="textstyle1">
-      <span class="textstyle8"><br/></span>
-      </div>
-    </div>
-  <div id="container_647c82f5">
-    <div class="textstyle1">
-      <span class="textstyle8">MEDCONTACT AI · ИНВЕСТИЦИОННЫЙ МЕМОРАНДУМ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h1 id="heading_4cfbf672">
-    <span class="textstyle9">
-      <span id="container_629e3c79">
-        <span class="textstyle9">
-          <span class="textstyle10">Терминалы</span>
-          </span>
-        </span>
-      <span class="textstyle10"><br/></span>
-      <span id="container_5f62f228">
-        <span class="textstyle9">
-          <span class="textstyle10">для медицины —</span>
-          </span>
-        </span>
-      <span class="textstyle10"><br/></span>
-      <span id="container_5b736143">
-        <span class="textstyle9">
-          <span class="textstyle10">следующий шаг</span>
-          </span>
-        </span>
-      <span class="textstyle10"><br/></span>
-      <span id="container_7062c2b0">
-        <span class="textstyle9">
-          <span class="textstyle10">для MedContact</span>
-          </span>
-        </span>
-      </span>
-    </h1>
-  <span class="textstyle3"><br/></span>
-  <div id="container_366cb74c">
-    <div class="textstyle1">
-      <span class="textstyle7">У нас уже есть работающая SaaS-платформа, 200+ клиентов в здравоохранении и −40% неявок. Партнёр по железу готов. Рынок в Казахстане открыт.</span>
-      </div>
-    </div>
-  <div id="container_406604df">
-    <div class="textstyle1">
-      <span class="textstyle11">Нужен 1 шаг: физические терминалы как фронтенд к нашей платформе.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5937bf07">
-    <div class="textstyle1">
-      <span class="textstyle12">Запрашиваем</span>
-      </div>
-    </div>
-  <div id="container_5367cd03">
-    <div class="textstyle1">
-      <span class="textstyle13">50–150 млн ₸</span>
-      </div>
-    </div>
-  <div id="container_76dfdc81">
-    <div class="textstyle1">
-      <span class="textstyle12">на оборотный капитал под первые партии терминалов и запуск продаж. Производство — на стороне партнёра. ROI — через 12–18 месяцев.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_29c6944a">
-    <div class="textstyle1">
-      <span class="textstyle14">MEDCONTACT AI · PRODUCTION METRICS</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_741b1441">
-    <div class="textstyle1">
-      <span class="textstyle15">healthcare_clients</span>
-      </div>
-    </div>
-  <div id="container_63efa2b7">
-    <div class="textstyle1">
-      <span class="textstyle16">→</span>
-      </div>
-    </div>
-  <div id="container_526a9cdd">
-    <div class="textstyle1">
-      <span class="textstyle15">200+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1efa2331">
-    <div class="textstyle1">
-      <span class="textstyle17">patient_contacts_year</span>
-      </div>
-    </div>
-  <div id="container_557d032a">
-    <div class="textstyle1">
-      <span class="textstyle16">→</span>
-      </div>
-    </div>
-  <div id="container_3310436c">
-    <div class="textstyle1">
-      <span class="textstyle17">3 000 000+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6036d6">
-    <div class="textstyle1">
-      <span class="textstyle18">no_show_reduction</span>
-      </div>
-    </div>
-  <div id="container_10377463">
-    <div class="textstyle1">
-      <span class="textstyle16">→</span>
-      </div>
-    </div>
-  <div id="container_4e6f07ae">
-    <div class="textstyle1">
-      <span class="textstyle18">−40%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_564289d1">
-    <div class="textstyle1">
-      <span class="textstyle16">countries_active →</span>
-      </div>
-    </div>
-  <div id="container_7a349e57">
-    <div class="textstyle1">
-      <span class="textstyle2">30+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_17c6ed17">
-    <div class="textstyle1">
-      <span class="textstyle16">kz_active_projects →</span>
-      </div>
-    </div>
-  <div id="container_5ad5420e">
-    <div class="textstyle1">
-      <span class="textstyle2">51</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_376d41f7">
-    <div class="textstyle1">
-      <span class="textstyle19">status</span>
-      </div>
-    </div>
-  <div id="container_68fe4326">
-    <div class="textstyle1">
-      <span class="textstyle16">→</span>
-      </div>
-    </div>
-  <div id="container_5fcdca19">
-    <div class="textstyle1">
-      <span class="textstyle19">PRODUCTION · LIVE</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
   </div>
-<div class="textstyle20">
-  <div id="container_5355ec6">
-    <div class="textstyle20">
-      <span class="textstyle21">50–150 млн ₸</span>
+
+  <div class="grid">
+    <div class="card hero">
+      <div class="inner">
+        <h1>Медицинские терминалы самообслуживания + голосовой ИИ</h1>
+        <p>
+          Продуктовый модуль для поликлиник и больниц: терминал в зоне ожидания, который берет на себя навигацию, ответы, запись/перенаправление,
+          сбор данных и поддержку пациентов — с интеграцией в реальные процессы.
+        </p>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="t">Платформа</div>
+            <div class="v">200+ клиентов</div>
+          </div>
+          <div class="kpi">
+            <div class="t">Активные проекты</div>
+            <div class="v">51 в РК</div>
+          </div>
+          <div class="kpi">
+            <div class="t">Команда</div>
+            <div class="v">80+ человек</div>
+          </div>
+          <div class="kpi">
+            <div class="t">Фокус</div>
+            <div class="v">Гос + сети</div>
+          </div>
+        </div>
+
+        <hr class="sep"/>
+
+        <div class="callout">
+          <h3>Почему это работает</h3>
+          <p>Это не “еще один чат-бот”. Это точка доступа пациента, которую можно поставить в “узкое место” и измеримо разгрузить регистратуру и врачей.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card side">
+      <img alt="Фото" class="photo" src="photo.jpg"/>
+      <div class="inner">
+        <div class="title">Василий Мясников</div>
+        <div class="small">
+          Founder &amp; CEO — MedContact / BP Contact<br/>
+          Строю масштабируемые Digital Health Operations: ИИ-коммуникации, контакт-центры, мониторинг, телемедицина, аналитика.
+        </div>
+        <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge">B2B / SaaS</span>
+          <span class="badge">Гос. сети МО</span>
+          <span class="badge">AI voice</span>
+          <span class="badge">операции 24/7</span>
+        </div>
       </div>
     </div>
   </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_238e9b4d">
-    <div class="textstyle20">
-      <span class="textstyle5">запрашиваем</span>
+
+  <div class="section cols">
+    <div class="card">
+      <div class="inner">
+        <h2>Проблема</h2>
+        <p>В поликлиниках и больницах «узкие места» почти всегда одинаковые: перегруженная регистратура, очереди, недозвоны, путаница маршрутов, дефицит персонала.</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Пациент не понимает, куда идти и что делать → хаос и конфликты</span></li>
+          <li><span class="dot"></span><span>Вопросы “однотипные”, но их тысячи → выгорание персонала</span></li>
+          <li><span class="dot"></span><span>Нужен управляемый сервисный слой, который можно измерять и улучшать</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="inner">
+        <h2>Решение</h2>
+        <p>Терминал самообслуживания с голосовым ИИ и интеграцией в МИС/CRM: в зоне ожидания он принимает обращения, дает инструкции, направляет и фиксирует результаты.</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Навигация и подсказки по маршруту пациента</span></li>
+          <li><span class="dot"></span><span>Сбор данных и “первичный опрос”</span></li>
+          <li><span class="dot"></span><span>Запись/перенаправление/информирование</span></li>
+          <li><span class="dot"></span><span>Аналитика: что спрашивают, где “болит”, где теряются</span></li>
+        </ul>
       </div>
     </div>
   </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_6079fd27">
-    <div class="textstyle20">
-      <span class="textstyle22">12–18 мес</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_12077a6">
-    <div class="textstyle20">
-      <span class="textstyle5">срок возврата</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  <div id="container_23baf3ea">
-    <div class="textstyle1">
-      <span class="textstyle23">200+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_78abf229">
-    <div class="textstyle1">
-      <span class="textstyle5">клиентов в здравоохранении</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_fb36e63">
-    <div class="textstyle1">
-      <span class="textstyle24">51</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_69563e92">
-    <div class="textstyle1">
-      <span class="textstyle5">активных проектов в РК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_25bcdda2">
-    <div class="textstyle1">
-      <span class="textstyle23">9 700</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6dbc64e9">
-    <div class="textstyle1">
-      <span class="textstyle5">медорганизаций — адресный рынок</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_292d7603">
-    <div class="textstyle1">
-      <span class="textstyle25">39%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5b6fb27c">
-    <div class="textstyle1">
-      <span class="textstyle5">маржа с продажи терминала</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3ae7ee26">
-    <div class="textstyle1">
-      <span class="textstyle23">0</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_38b2d1f2">
-    <div class="textstyle1">
-      <span class="textstyle5">специализированных конкурентов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4ab48a4b">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">01 — ИНВЕСТИЦИОННЫЙ ТЕЗИС<br/></span>
-<h2 id="heading_2591a13d">Не стартап.<br/> Расширение работающего бизнеса.</h2><span class="textstyle3"><br/></span><span class="textstyle7">MedContact AI — живая платформа с 200+ клиентами в здравоохранении. Мы уже делаем</span><span class="textstyle11">−40% неявок</span><span class="textstyle7">в клиниках через голосовых роботов и автоматизацию. Терминал — следующий логичный шаг: физическая точка входа пациента прямо в нашу экосистему.<br/></span><span class="textstyle12">Всё ПО, интеграции с МИС, ЕХМД-шлюз, команда —</span><span class="textstyle4">уже существуют</span><span class="textstyle12">. Партнёр производит железо. Не хватает только оборотного капитала под первую партию.<br/></span>  <div id="container_3fffa953">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_78c153f2">
-    <div class="textstyle1">
-      <span class="textstyle8">ПОЧЕМУ ТЕРМИНАЛЫ СЕЙЧАС</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4b9a073a">
-    <div class="textstyle1">
-      <span class="textstyle26"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7e5cdcd">
-    <div class="textstyle1">
-      <span class="textstyle2">SaaS-платформа готова</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_da1c9ae">
-    <div class="textstyle1">
-      <span class="textstyle16">МедКонтакт уже интегрирован в MIS/ЕХМД. Терминал — только «экран» к нему.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3b5f3f25">
-    <div class="textstyle1">
-      <span class="textstyle26"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1e69e5c9">
-    <div class="textstyle1">
-      <span class="textstyle2">Партнёр производит железо</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1905419d">
-    <div class="textstyle1">
-      <span class="textstyle16">Партнёр по производству терминалов уже в команде и готов инвестировать оборудованием.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_c6641e8">
-    <div class="textstyle1">
-      <span class="textstyle26">🇰</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_186163be">
-    <div class="textstyle1">
-      <span class="textstyle2">Казахстан — чистое поле</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_281fe99">
-    <div class="textstyle1">
-      <span class="textstyle16">Нет ни одного специализированного игрока. Альтернативные решения продаются дороже и без ЕХМД.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5c024e5e">
-    <div class="textstyle1">
-      <span class="textstyle27">⏱</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_a4a5bc0">
-    <div class="textstyle1">
-      <span class="textstyle2">Окно 6–12 месяцев</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_268e8464">
-    <div class="textstyle1">
-      <span class="textstyle16">Российские вендоры (TouchPlat, WSENS) пока не в РК. Потом будет дороже и сложнее.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_11d6026c">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_19ccd5">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">02 — РЫНОК<br/></span>
-<h2 id="heading_18fb9fa2">Рынок огромный.<br/> Деньги уже выделены.<br/> Конкурентов нет.</h2><span class="textstyle3"><br/></span><span class="textstyle7">3 трлн тенге — бюджет здравоохранения РК на 2025 год. Строятся 655 новых объектов ПМСП. Запущен ЕХМД. Казахстан активно цифровизирует медицину — и до сих пор не имеет ни одного специализированного производителя медицинских терминалов.<br/></span>  <div id="container_2fd0cfa3">
-    <div class="textstyle1">
-      <span class="textstyle28">Медорганизаций в РК (всего)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6c2eb9ed">
-    <div class="textstyle1">
-      <span class="textstyle5">Больницы, поликлиники, ПМСП, лаборатории</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_736a7d">
-    <div class="textstyle1">
-      <span class="textstyle29">11 120</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1e9d99ef">
-    <div class="textstyle1">
-      <span class="textstyle28">В системе ОСМС (65% — частные)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_76a969fb">
-    <div class="textstyle1">
-      <span class="textstyle5">Платёжеспособный первый эшелон</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_518623cc">
-    <div class="textstyle1">
-      <span class="textstyle29">1 757</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3a4e7816">
-    <div class="textstyle1">
-      <span class="textstyle28">Крупные больницы + поликлиники</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_390e2984">
-    <div class="textstyle1">
-      <span class="textstyle5">Основной целевой сегмент</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_40946e16">
-    <div class="textstyle1">
-      <span class="textstyle29">~4 000</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7d4ca78d">
-    <div class="textstyle1">
-      <span class="textstyle28">Потенциал (2–3 терм. на точку)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_39fbfba2">
-    <div class="textstyle1">
-      <span class="textstyle5">Суммарный объём рынка оборудования</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_675eb619">
-    <div class="textstyle1">
-      <span class="textstyle30">8–10 млрд ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_22e6e836">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_162c04d3">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_242537b3">
-    <div class="textstyle1">
-      <span class="textstyle32">655</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_1bf9ce1b">
-    <span class="textstyle9">
-      <span id="container_576ee591">
-        <span class="textstyle9">
-          <span class="textstyle11">новых объектов ПМСП</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_262538db">
-    <div class="textstyle1">
-      <span class="textstyle12">строятся прямо сейчас — каждый нужен терминал при открытии</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_53f82aee">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_6eb92bd4">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_87482a4">
-    <div class="textstyle1">
-      <span class="textstyle33">80%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_54def589">
-    <span class="textstyle9">
-      <span id="container_7317d1">
-        <span class="textstyle9">
-          <span class="textstyle11">медданных в ЕХМД</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6c28bad">
-    <div class="textstyle1">
-      <span class="textstyle12">интеграция с нашей платформой — технически готова уже сейчас</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6c4bae7a">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_3fdd70ee">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_282d5edf">
-    <div class="textstyle1">
-      <span class="textstyle34">3 трлн</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_74b63437">
-    <span class="textstyle9">
-      <span id="container_3270aee3">
-        <span class="textstyle9">
-          <span class="textstyle11">бюджет здравоохранения</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_36727375">
-    <div class="textstyle1">
-      <span class="textstyle12">3-кратный рост с 2019 — государство тратит на цифровизацию медицины</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_65e56ad4">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_2deaf571">
-    <div class="textstyle1">
-      <span class="textstyle31">⚡</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4077cb43">
-    <div class="textstyle1">
-      <span class="textstyle35">12–16%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_6eaffb29">
-    <span class="textstyle9">
-      <span id="container_1d4462e8">
-        <span class="textstyle9">
-          <span class="textstyle11">CAGR мирового рынка</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_519bdd43">
-    <div class="textstyle1">
-      <span class="textstyle12">медицинских киосков: $1.4 млрд (2024) → $4 млрд к 2030</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_5c8f0977">
-    <div class="textstyle20">
-      <span class="textstyle6">АЛМАТЫ — ПРИМЕР</span>
+
+  <div class="section">
+    <div class="card">
+      <div class="inner">
+        <h2>Модель продаж и unit-экономика (ориентиры)</h2>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Показатель</th>
+              <th>Значение</th>
+              <th>Комментарий</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Себестоимость терминала</strong></td>
+              <td>800 000 тг</td>
+              <td>с доставкой и гарантией 12 мес</td>
+            </tr>
+            <tr>
+              <td><strong>ПО + интеграция</strong></td>
+              <td>500 000 тг</td>
+              <td>подключение, настройка, интеграции, запуск</td>
+            </tr>
+            <tr>
+              <td><strong>Привлечение клиента</strong></td>
+              <td>400 000 тг</td>
+              <td>продажи / тендерная подготовка / маркетинг</td>
+            </tr>
+            <tr style="background:rgba(212,168,67,.03)">
+              <td><strong>Цена продажи (ориентир)</strong></td>
+              <td><strong>2 800 000 тг</strong></td>
+              <td>“стандарт” поставка</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;color:rgba(255,255,255,.62);font-size:12px;line-height:1.6;">
+          * Возможны варианты аренды/рассрочки и подписки (терминал + ПО), а также оптовые продажи в регионы/сети.
+        </div>
       </div>
     </div>
   </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_6d9f21fa">
-    <div class="textstyle20">
-      <span class="textstyle36">72</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_312992db">
-    <div class="textstyle20">
-      <span class="textstyle5">крупные гос. МО</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-<h3 id="heading_4b558e04">Один Алматы = 400–500 млн тенге</h3><span class="textstyle3"><br/></span><span class="textstyle12">72 медорганизации × 2–3 терминала на каждую (41 поликлиника + 31 стационар, у многих несколько корпусов и входов) = 144–216 единиц. При средней цене 2,3 млн ₸ — это 330–500 млн ₸ только по одному городу.<br/></span>  <div id="container_7b660c85">
-    <div class="textstyle1">
-      <span class="textstyle37">× 20 областей и городов РЗ</span>
-      </div>
-    </div>
-  <div id="container_52eccd2c">
-    <div class="textstyle1">
-      <span class="textstyle8">= 8–10 млрд ₸ рынок госсектора</span>
-      </div>
-    </div>
-  <div id="container_289fdf79">
-    <div class="textstyle1">
-      <span class="textstyle38">+ частные сети = 12+ млрд ₸ итого</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6665e95d">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_4faf1adb">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">03 — ПРОДУКТ<br/></span>
-<h2 id="heading_66e1af99">Три версии терминала.<br/> Одна платформа MedContact.</h2><span class="textstyle3"><br/></span><span class="textstyle7">Железо — от партнёра-производителя. ПО, интеграции, ЕХМД, DamuMed, аналитика — наша платформа. Поддержка казахского и русского языков из коробки.<br/></span>  <div id="container_b3f53c5">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_5be111dc">
-    <div class="textstyle1">
-      <span class="textstyle5">МИНИ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_154ecdc7">
-    <div class="textstyle1">
-      <span class="textstyle39">600–800</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5bab873a">
-    <div class="textstyle1">
-      <span class="textstyle16">тыс. ₸ · настенный</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7f133741">
-    <div class="textstyle1">
-      <span class="textstyle16">Компактный, для ФАП, небольших клиник и дополнительных точек в коридорах</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4530fcf3">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_10628545">
-    <div class="textstyle1">
-      <span class="textstyle28">Экран 15–19″ сенсорный</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_279bbf90">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_40bb7d8e">
-    <div class="textstyle1">
-      <span class="textstyle28">Электронная очередь + талоны</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_55838b2f">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5f9933d8">
-    <div class="textstyle1">
-      <span class="textstyle28">Запись на приём через MedContact</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_415773fa">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1bb988f3">
-    <div class="textstyle1">
-      <span class="textstyle28">Проверка статуса ОСМС</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1de17642">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_33eae9af">
-    <div class="textstyle1">
-      <span class="textstyle28">Интеграция ЕХМД / МИС</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_435e7ec7">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4cff2a18">
-    <div class="textstyle1">
-      <span class="textstyle28">KZ / RU интерфейс</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_70ff88d1">
-    <div class="textstyle1">
-      <span class="textstyle40">ХИТ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_25d60c92">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-<span class="textstyle6">СТАНДАРТ<br/></span><span class="textstyle39">1 400–1 800<br/></span><span class="textstyle16">тыс. ₸ · напольный<br/>Закрывает 90% потребностей поликлиники. Основной объём продаж.<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Экран 22″ + принтер чеков<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Приём наличных / картридер / Kaspi QR<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Оплата медуслуг через Kaspi<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Полная интеграция MedContact + ЕХМД<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Аналитика очередей в реальном времени<br/></span><span class="textstyle15">✓<br/></span><span class="textstyle28">Реклама / контент МЗ на экране<br/></span>  <div id="container_5c3f94ed">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_4fa56e8e">
-    <div class="textstyle1">
-      <span class="textstyle8">РАСШИРЕННЫЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3b39939d">
-    <div class="textstyle1">
-      <span class="textstyle39">2 400–2 800</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_61be6478">
-    <div class="textstyle1">
-      <span class="textstyle16">тыс. ₸ · для госзакупок</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1173b1e6">
-    <div class="textstyle1">
-      <span class="textstyle16">Для крупных больниц и акиматов. Полный функционал + ИИ-ассистент</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6da04819">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_be9feca">
-    <div class="textstyle1">
-      <span class="textstyle28">Рециркулятор купюр + экран 24″+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_66f912f">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_e712e15">
-    <div class="textstyle1">
-      <span class="textstyle28">Голосовой ИИ-ассистент (каз/рус)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_625883fc">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_351492ef">
-    <div class="textstyle1">
-      <span class="textstyle28">Биометрия / Face ID (опционально)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3d7b0543">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2ebc4db2">
-    <div class="textstyle1">
-      <span class="textstyle28">Интеграция ЕНКПЗ МЗРК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1bcf106b">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3272e6cb">
-    <div class="textstyle1">
-      <span class="textstyle28">Централизованное управление парком</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_31865fd7">
-    <div class="textstyle1">
-      <span class="textstyle15">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_323cbf0c">
-    <div class="textstyle1">
-      <span class="textstyle28">IP65, ИБП, гарантия 12 мес.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_11b98f9e">
-    <div class="textstyle1">
-      <span class="textstyle41"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_2f4a1e83">
-    <span class="textstyle9">
-      <span id="container_51b30ccd">
-        <span class="textstyle9">
-          <span class="textstyle42">Всё работает на платформе MedContact AI</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2f5c4d2">
-    <div class="textstyle1">
-      <span class="textstyle12">Терминалы — не отдельный продукт. Это физическая точка входа в нашу экосистему: единый кабинет клиники, аналитика, удалённый мониторинг, SaaS-подписка.</span>
-      </div>
-    </div>
-  <div id="container_5ee32cee">
-    <div class="textstyle1">
-      <span class="textstyle4">ПО уже написано. Интеграции уже сделаны.</span>
-      </div>
-    </div>
-  <div id="container_53891bec">
-    <div class="textstyle1">
-      <span class="textstyle12">Что нового: корпус, экран, принтер — поставляет партнёр.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle43">
-  <div id="container_478fcc2">
-    <div class="textstyle43">
-      <span class="textstyle44"><a href="https://medcontact.nealkhis.com/" class="wsp672bb1f9">medcontact.nealkhis.com →</a></span>
+
+  <div class="section">
+    <div class="card">
+      <div class="inner">
+        <h2>Краткие условия — модель «Медтерминал» и «МедКонтакт»</h2>
+        <div class="muted" style="font-size:13px;line-height:1.7;">
+          <strong>Стороны:</strong><br/>
+          • Совместное предприятие “Медтерминал” (доли 50/50)<br/>
+          • ТОО “МедКонтакт” (компания Василия)<br/><br/>
+          <strong>Цель:</strong> убрать конфликт интересов за счёт простого правила: “Медтерминал” = там, где есть совместная ценность в продукте/железе.
+          “МедКонтакт” = работы, внедрение и сопровождение ПО (кроме случаев с постгарантийным сервисом железа).
+        </div>
+
+        <hr class="sep"/>
+
+        <div class="cols">
+          <div class="card" style="box-shadow:none">
+            <div class="inner" style="padding:16px">
+              <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">1) Что относится к “Медтерминал” (50/50)</div>
+              <ul class="list" style="margin-top:0">
+                <li>
+                  <span class="dot"></span>
+                  <span>
+                    <strong>1.1. Разовая поставка “Терминал + базовое ПО”</strong><br/>
+                    Если клиент покупает терминал и базовое ПО (то, без чего терминал не работает) — это сделка “Медтерминал”.
+                  </span>
+                </li>
+                <li>
+                  <span class="dot"></span>
+                  <span>
+                    <strong>1.2. Модель “Терминал + ПО в рассрочку/по подписке”</strong><br/>
+                    Если клиент платит регулярными платежами за пакет, где вместе идут терминал и ПО — это сделка “Медтерминал”.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="inner" style="padding:16px">
+              <div style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">2) Правило «если клиент покупает и железо, и ПО после гарантии»</div>
+              <div style="padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.02);">
+                <div style="color:var(--text);font-size:12px;line-height:1.7;">
+                  <div style="margin-bottom:10px;">Если клиент после гарантии покупает и сервис железа, и сопровождение ПО, то это Медтерминал.</div>
+                  <div style="color:rgba(255,255,255,.70);font-size:12px;line-height:1.7;">
+                    Если по отдельности, модель работает так:
+                    <ul style="margin:8px 0 0 18px;padding:0;">
+                      <li style="margin:6px 0;">строка/часть “сервис железа” → “IDC”</li>
+                      <li style="margin:6px 0;">строка/часть “сопровождение ПО” → “МедКонтакт”</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:10px;color:rgba(255,255,255,.62);font-size:12px;line-height:1.6;">
+                Примечание: базовое ПО, без которого терминал не работает, входит в сделки “Медтерминал”.
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle43">
-  <div id="container_a31aa2e">
-    <div class="textstyle43">
-      <span class="textstyle5">Живой продукт</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  <div id="container_2ccb0cc1">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">04 — UNIT-ЭКОНОМИКА<br/></span>
-<h2 id="heading_387ae251">39% маржи с продажи.<br/> Плюс вечный SaaS-хвост.</h2>  <span class="textstyle3"><br/></span>
-  <div id="container_4eb91350">
-    <div id="container_4eb91350_padding" >
-      <div class="textstyle1">
-        <div id="container_42b0ddf2">
-          <div class="textstyle1">
-            <span class="textstyle14">СТАТЬЯ</span>
+
+  <div class="section">
+    <div class="card">
+      <div class="inner">
+        <h2>Инвестиционные сценарии: 50 / 100 / 150 млн тг</h2>
+
+        <div class="stack">
+          <div class="f-row">
+            <div class="f-card">
+              <div class="lbl">Сценарий A</div>
+              <div class="num">50 млн</div>
+              <div class="sub">пилотная партия + запуск 1–2 регионов</div>
+            </div>
+            <div class="f-card" style="border-color:rgba(212,168,67,.3);">
+              <div class="lbl">Сценарий B</div>
+              <div class="num">100 млн</div>
+              <div class="sub">партия 50–60 терминалов + параллельные регионы</div>
+            </div>
+            <div class="f-card">
+              <div class="lbl">Сценарий C</div>
+              <div class="num">150 млн</div>
+              <div class="sub">ускорение продаж + запас оборотки + масштабирование внедрений</div>
             </div>
           </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_475f85eb">
-    <div id="container_475f85eb_padding" >
-      <div class="textstyle1">
-        <div id="container_7c08e295">
-          <div class="textstyle1">
-            <span class="textstyle14">ТИП</span>
-            </div>
+
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Сценарий</th>
+                <th>Фокус</th>
+                <th>Ключевой результат</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>50 млн</strong></td>
+                <td>проверка модели / быстрые первые продажи</td>
+                <td>первые 20–30 терминалов</td>
+              </tr>
+              <tr style="background:rgba(212,168,67,.03)">
+                <td><strong>100 млн</strong></td>
+                <td>масштабирование стартовой партии</td>
+                <td>50–60 терминалов + повторяемость процесса</td>
+              </tr>
+              <tr>
+                <td><strong>150 млн</strong></td>
+                <td>ускорение и запас оборотки</td>
+                <td>80–100 терминалов при высокой скорости запусков</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="muted" style="font-size:12px;line-height:1.7;">
+            * Точная конфигурация зависит от состава сделки (продажа / подписка / рассрочка) и оптовых региональных закупок.
           </div>
         </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_7a00b22">
-    <div id="container_7a00b22_padding" >
-      <div class="textstyle43">
-        <div id="container_b72ce20">
-          <div class="textstyle43">
-            <span class="textstyle14">СУММА</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_6b8117b2">
-    <div id="container_6b8117b2_padding" >
-      <div class="textstyle1">
-        <div id="container_242c4b28">
-          <div class="textstyle1">
-            <span class="textstyle14">КОММЕНТАРИЙ</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_5be0cb67">
-    <div id="container_5be0cb67_padding" >
-      <div class="textstyle1">
-        <div id="container_503a6984">
-          <div class="textstyle1">
-            <span class="textstyle28">Железо + доставка + гарантия 12 мес.</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_32bfc904">
-    <div id="container_32bfc904_padding" >
-      <div class="textstyle1">
-        <div id="container_3d195bad">
-          <div class="textstyle1">
-            <span class="textstyle46">Себестоимость</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_725ef90e">
-    <div id="container_725ef90e_padding" >
-      <div class="textstyle43">
-        <div id="container_20c62a27">
-          <div class="textstyle43">
-            <span class="textstyle47">−800 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_1f6410d5">
-    <div id="container_1f6410d5_padding" >
-      <div class="textstyle1">
-        <div id="container_2de96b27">
-          <div class="textstyle1">
-            <span class="textstyle16">Поставляет партнёр-производитель</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_2e277405">
-    <div id="container_2e277405_padding" >
-      <div class="textstyle1">
-        <div id="container_576d6994">
-          <div class="textstyle1">
-            <span class="textstyle28">ПО + интеграция МИС/ЕХМД + настройка</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_3c947e0e">
-    <div id="container_3c947e0e_padding" >
-      <div class="textstyle1">
-        <div id="container_639df4c2">
-          <div class="textstyle1">
-            <span class="textstyle46">Себестоимость</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_eb4f4b0">
-    <div id="container_eb4f4b0_padding" >
-      <div class="textstyle43">
-        <div id="container_338f9aeb">
-          <div class="textstyle43">
-            <span class="textstyle47">−500 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_5d7757fc">
-    <div id="container_5d7757fc_padding" >
-      <div class="textstyle1">
-        <div id="container_3e7e48b9">
-          <div class="textstyle1">
-            <span class="textstyle16">Платформа MedContact — уже готова</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_23e30974">
-    <div id="container_23e30974_padding" >
-      <div class="textstyle1">
-        <div id="container_5465f2a0">
-          <div class="textstyle1">
-            <span class="textstyle28">Привлечение клиента (продажи + маркетинг)</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_4a350f91">
-    <div id="container_4a350f91_padding" >
-      <div class="textstyle1">
-        <div id="container_7a87f52a">
-          <div class="textstyle1">
-            <span class="textstyle46">Себестоимость</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_4787d90b">
-    <div id="container_4787d90b_padding" >
-      <div class="textstyle43">
-        <div id="container_5c60eb0">
-          <div class="textstyle43">
-            <span class="textstyle47">−400 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_e6cae88">
-    <div id="container_e6cae88_padding" >
-      <div class="textstyle1">
-        <div id="container_535fb541">
-          <div class="textstyle1">
-            <span class="textstyle16">Снижается по мере роста базы</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_666e48e">
-    <div id="container_666e48e_padding" >
-      <div class="textstyle1">
-        <div id="container_1b2936b3">
-          <div class="textstyle1">
-            <span class="textstyle28">Итого себестоимость</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_4f0ee17e">
-    <div id="container_4f0ee17e_padding" >
-      <div class="textstyle1">
-        <div id="container_9ba2ddd">
-          <div class="textstyle1">
-            <span class="textstyle28"><br/></span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_233c7d9f">
-    <div id="container_233c7d9f_padding" >
-      <div class="textstyle43">
-        <div id="container_6b5a6c45">
-          <div class="textstyle43">
-            <span class="textstyle48">1 700 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_72d026c9">
-    <div id="container_72d026c9_padding" >
-      <div class="textstyle1">
-        <div id="container_66dfb28f">
-          <div class="textstyle1">
-            <span class="textstyle28"><br/></span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_44d4ed7b">
-    <div id="container_44d4ed7b_padding" >
-      <div class="textstyle1">
-        <div id="container_5d766e6">
-          <div class="textstyle1">
-            <span class="textstyle28">Цена продажи клиенту (Стандарт)</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_789a6bc6">
-    <div id="container_789a6bc6_padding" >
-      <div class="textstyle1">
-        <div id="container_4244985c">
-          <div class="textstyle1">
-            <span class="textstyle8">Выручка</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_6083a915">
-    <div id="container_6083a915_padding" >
-      <div class="textstyle43">
-        <div id="container_404cb10e">
-          <div class="textstyle43">
-            <span class="textstyle49">2 800 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_10560031">
-    <div id="container_10560031_padding" >
-      <div class="textstyle1">
-        <div id="container_262a27b5">
-          <div class="textstyle1">
-            <span class="textstyle16">Сопоставимые предложения на рынке доходят до 3 300 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_136031be">
-    <div id="container_136031be_padding" >
-      <div class="textstyle1">
-        <div id="container_567a13af">
-          <div class="textstyle1">
-            <span class="textstyle28">Валовая прибыль с терминала</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_482b4341">
-    <div id="container_482b4341_padding" >
-      <div class="textstyle1">
-        <div id="container_7d1562a2">
-          <div class="textstyle1">
-            <span class="textstyle37">Прибыль</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_678565fb">
-    <div id="container_678565fb_padding" >
-      <div class="textstyle43">
-        <div id="container_93275a">
-          <div class="textstyle43">
-            <span class="textstyle48">1 100 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_764341c3">
-    <div id="container_764341c3_padding" >
-      <div class="textstyle1">
-        <div id="container_3b3fdfd8">
-          <div class="textstyle1">
-            <span class="textstyle16">Маржа 39%</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5d7aadde">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_111cdd74">
-    <div class="textstyle1">
-      <span class="textstyle33">+600k ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_3a7e23e5">
-    <span class="textstyle9">
-      <span id="container_1aa832cf">
-        <span class="textstyle9">
-          <span class="textstyle11">SaaS за год</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_79a9aeec">
-    <div class="textstyle1">
-      <span class="textstyle12">50 000 ₸/мес × 12 = 600 000 ₸ чистой рекуррентной выручки с каждого терминала ежегодно. Автоматически.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3f72d5ca">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_4d5b22c">
-    <div class="textstyle1">
-      <span class="textstyle32">2.9 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_3064b2ed">
-    <span class="textstyle9">
-      <span id="container_46a3433c">
-        <span class="textstyle9">
-          <span class="textstyle11">LTV одного терминала (3 года)</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_32d89e2b">
-    <div class="textstyle1">
-      <span class="textstyle12">Продажа 1 100 000 + SaaS 1 800 000 (50 тыс × 36) = 2 900 000 ₸ за жизненный цикл</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1c2c80a2">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_1af09289">
-    <div class="textstyle1">
-      <span class="textstyle34">&lt; 12 мес</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_39fe2b9c">
-    <span class="textstyle9">
-      <span id="container_2571e494">
-        <span class="textstyle9">
-          <span class="textstyle11">Окупаемость для клиники</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3cafe49f">
-    <div class="textstyle1">
-      <span class="textstyle12">1 терминал экономит ≥1 ставку администратора. По данным российского кейса — экономия 550 000 руб./год при стоимости 350 000 руб.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1a9378f9">
-    <div class="textstyle1">
-      <span class="textstyle50"><br/></span>
-      </div>
-    </div>
-<h3 id="heading_23df2364">Модель аренды — для госструктур с долгим бюджетным циклом</h3>  <span class="textstyle3"><br/></span>
-  <div id="container_698a1b8a">
-    <div id="container_698a1b8a_padding" >
-      <div class="textstyle1">
-        <div id="container_5520e51f">
-          <div class="textstyle1">
-            <span class="textstyle14">МОДЕЛЬ</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_626b7dcb">
-    <div id="container_626b7dcb_padding" >
-      <div class="textstyle1">
-        <div id="container_268e0ff4">
-          <div class="textstyle1">
-            <span class="textstyle14">КОМУ ПОДХОДИТ</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_40dc4bfe">
-    <div id="container_40dc4bfe_padding" >
-      <div class="textstyle1">
-        <div id="container_492d894b">
-          <div class="textstyle1">
-            <span class="textstyle14">ЕЖЕМЕСЯЧНО</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_1136c2fa">
-    <div id="container_1136c2fa_padding" >
-      <div class="textstyle1">
-        <div id="container_349ceca8">
-          <div class="textstyle1">
-            <span class="textstyle14">ЗА 36 МЕС.</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_4f63da91">
-    <div id="container_4f63da91_padding" >
-      <div class="textstyle1">
-        <div id="container_4c71b41a">
-          <div class="textstyle1">
-            <span class="textstyle14">НАШ ИТОГ VS ПРОДАЖИ</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_d897a91">
-    <div id="container_d897a91_padding" >
-      <div class="textstyle1">
-        <div id="container_40bea98b">
-          <div class="textstyle1">
-            <span class="textstyle28">Продажа</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_50690203">
-    <div id="container_50690203_padding" >
-      <div class="textstyle1">
-        <div id="container_73b4e3e6">
-          <div class="textstyle1">
-            <span class="textstyle28">Частные сети, быстрые решения</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_2bce6ee0">
-    <div id="container_2bce6ee0_padding" >
-      <div class="textstyle1">
-        <div id="container_2964d6b6">
-          <div class="textstyle1">
-            <span class="textstyle28">—</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_2e08b911">
-    <div id="container_2e08b911_padding" >
-      <div class="textstyle1">
-        <div id="container_42c07c0e">
-          <div class="textstyle1">
-            <span class="textstyle28">2 800 000 ₸ сразу</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_50d7ed38">
-    <div id="container_50d7ed38_padding" >
-      <div class="textstyle1">
-        <div id="container_52984ea4">
-          <div class="textstyle1">
-            <span class="textstyle8">Базовая маржа</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_2ea21bd3">
-    <div id="container_2ea21bd3_padding" >
-      <div class="textstyle1">
-        <div id="container_7fe711c4">
-          <div class="textstyle1">
-            <span class="textstyle28">Аренда 24 мес.</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_381d2e86">
-    <div id="container_381d2e86_padding" >
-      <div class="textstyle1">
-        <div id="container_7ecad1f6">
-          <div class="textstyle1">
-            <span class="textstyle28">Средние клиники, ОСМС</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_44593033">
-    <div id="container_44593033_padding" >
-      <div class="textstyle1">
-        <div id="container_3113f87c">
-          <div class="textstyle1">
-            <span class="textstyle28">120 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_4c8f5296">
-    <div id="container_4c8f5296_padding" >
-      <div class="textstyle1">
-        <div id="container_6defc37a">
-          <div class="textstyle1">
-            <span class="textstyle28">2 880 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_3db5ad">
-    <div id="container_3db5ad_padding" >
-      <div class="textstyle1">
-        <div id="container_50f238d0">
-          <div class="textstyle1">
-            <span class="textstyle37">+80 000 ₸ к базе</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <span class="textstyle45"> </span>
-  <div id="container_48186463">
-    <div id="container_48186463_padding" >
-      <div class="textstyle1">
-        <div id="container_458bdcab">
-          <div class="textstyle1">
-            <span class="textstyle28">Аренда 36 мес.</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_5fef2ddf">
-    <div id="container_5fef2ddf_padding" >
-      <div class="textstyle1">
-        <div id="container_ebb3a9e">
-          <div class="textstyle1">
-            <span class="textstyle28">Акиматы, госструктуры</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_49939148">
-    <div id="container_49939148_padding" >
-      <div class="textstyle1">
-        <div id="container_34a9c70e">
-          <div class="textstyle1">
-            <span class="textstyle28">85 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_2341c26d">
-    <div id="container_2341c26d_padding" >
-      <div class="textstyle1">
-        <div id="container_30d72b6c">
-          <div class="textstyle1">
-            <span class="textstyle28">3 060 000 ₸</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle45"> </span>
-  <div id="container_509b3de1">
-    <div id="container_509b3de1_padding" >
-      <div class="textstyle1">
-        <div id="container_248934c5">
-          <div class="textstyle1">
-            <span class="textstyle37">+260 000 ₸ к базе</span>
-            </div>
-          </div>
-        </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_19332a82">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_31611e5e">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">05 — ЦЕЛЕВЫЕ СЕГМЕНТЫ<br/></span>
-<h2 id="heading_4240705f">Три канала продаж —<br/> разная тактика, разный чек.</h2>  <span class="textstyle3"><br/></span>
-  <div id="container_8ed4975">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_539f9cf3">
-    <div class="textstyle1">
-      <span class="textstyle51"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_a940152">
-    <span class="textstyle9">
-      <span id="container_6deea43a">
-        <span class="textstyle9">
-          <span class="textstyle11">Частные сети клиник</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4d59119c">
-    <div class="textstyle1">
-      <span class="textstyle16">Первый эшелон. Быстрые решения, свои бюджеты, конкуренция за сервис.</span>
-      </div>
-    </div>
-  <div id="container_4d9f2d62">
-    <div class="textstyle1">
-      <span class="textstyle2">У MedContact уже есть клиенты в этих сетях.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3f8db0cd">
-    <div class="textstyle1">
-      <span class="textstyle16">Interteach</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_17498188">
-    <div class="textstyle1">
-      <span class="textstyle28">30+ клиник</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_15c8b152">
-    <div class="textstyle1">
-      <span class="textstyle16">Медикер</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_46cab56d">
-    <div class="textstyle1">
-      <span class="textstyle28">24+ центра, 14 городов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_718858e9">
-    <div class="textstyle1">
-      <span class="textstyle16">КДЛ Олимп</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5c51dc3e">
-    <div class="textstyle1">
-      <span class="textstyle28">600+ кабинетов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6d8dd438">
-    <div class="textstyle1">
-      <span class="textstyle16">INVIVO / Инвитро</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_35472897">
-    <div class="textstyle1">
-      <span class="textstyle28">205+ / 100+ точек</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3e5fa648">
-    <div class="textstyle1">
-      <span class="textstyle8">Пакеты 5–30 терминалов. Цикл сделки 1–3 мес.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3886cfe4">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_289f1089">
-    <div class="textstyle1">
-      <span class="textstyle51"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_532a2560">
-    <span class="textstyle9">
-      <span id="container_47a15296">
-        <span class="textstyle9">
-          <span class="textstyle11">Акиматы и государственные МО</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7815ff3a">
-    <div class="textstyle1">
-      <span class="textstyle16">Долгий цикл, но оптовые заказы. У нас уже есть протокол МЗРК и справка для акимата Жамбылской области.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_11e1a369">
-    <div class="textstyle1">
-      <span class="textstyle22">72</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_142a34e3">
-    <div class="textstyle1">
-      <span class="textstyle14">гос. МО, Алматы</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_78c964fa">
-    <div class="textstyle1">
-      <span class="textstyle22">2–3</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_498d0891">
-    <div class="textstyle1">
-      <span class="textstyle14">терм. на МО</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4891557b">
-    <div class="textstyle1">
-      <span class="textstyle49">400–500 млн</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_600d679f">
-    <div class="textstyle1">
-      <span class="textstyle14">бюджет, ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5a4a75f3">
-    <div class="textstyle1">
-      <span class="textstyle49">×20</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_468c5eea">
-    <div class="textstyle1">
-      <span class="textstyle14">регионов РК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5e8813fa">
-    <div class="textstyle1">
-      <span class="textstyle16">Итого потенциал госсектора:</span>
-      </div>
-    </div>
-  <div id="container_cd83f5d">
-    <div class="textstyle1">
-      <span class="textstyle18">8–10 млрд ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6daf588c">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_f20347b">
-    <div class="textstyle1">
-      <span class="textstyle51"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_6f726b76">
-    <span class="textstyle9">
-      <span id="container_57e7dcb5">
-        <span class="textstyle9">
-          <span class="textstyle11">Лаборатории и диагностика</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_85ee757">
-    <div class="textstyle1">
-      <span class="textstyle16">Высокий трафик, стандартный процесс регистрации. Терминал окупается за месяцы.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_797b68fe">
-    <div class="textstyle1">
-      <span class="textstyle16">КДЛ Олимп</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1a586d20">
-    <div class="textstyle1">
-      <span class="textstyle28">110 fil. / Алматы</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3b703136">
-    <div class="textstyle1">
-      <span class="textstyle16">INVIVO</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2cc46151">
-    <div class="textstyle1">
-      <span class="textstyle28">205+ точек по РК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_41bdbfe6">
-    <div class="textstyle1">
-      <span class="textstyle16">Инвитро</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_61e492ed">
-    <div class="textstyle1">
-      <span class="textstyle28">100+ офисов, 23 города</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4f5e97b4">
-    <div class="textstyle1">
-      <span class="textstyle38">Потенциал: 400–800 терминалов только по лаб. сетям</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_19c7b70d">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">06 — ФИНАНСОВАЯ МОДЕЛЬ<br/></span>
-<h2 id="heading_3aa7fb8d">Три сценария.<br/> Базовый уже интересный.</h2>  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_56d7e83b">
-    <div class="textstyle20">
-      <span class="textstyle52">КОНСЕРВАТИВНЫЙ</span>
       </div>
     </div>
   </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_c7e34a">
-    <div class="textstyle20">
-      <span class="textstyle53">90</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_5eb14185">
-    <div class="textstyle20">
-      <span class="textstyle16">терминалов за 2026</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  <div id="container_7be3b3f7">
-    <div class="textstyle1">
-      <span class="textstyle16">Выручка (продажа)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_323ed849">
-    <div class="textstyle1">
-      <span class="textstyle18">252 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5d2c557e">
-    <div class="textstyle1">
-      <span class="textstyle16">Себестоимость</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7fe2747e">
-    <div class="textstyle1">
-      <span class="textstyle28">153 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_265a9c0b">
-    <div class="textstyle1">
-      <span class="textstyle16">Валовая прибыль</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4157cec4">
-    <div class="textstyle1">
-      <span class="textstyle15">99 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_21320df1">
-    <div class="textstyle1">
-      <span class="textstyle16">Маржа</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_645a987d">
-    <div class="textstyle1">
-      <span class="textstyle18">39%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6c82e3d6">
-    <div class="textstyle1">
-      <span class="textstyle16">SaaS в год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_291fdfdf">
-    <div class="textstyle1">
-      <span class="textstyle15">+54 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_76c12120">
-    <div class="textstyle1">
-      <span class="textstyle16">Возврат инвестиций</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2298a83">
-    <div class="textstyle1">
-      <span class="textstyle15">~14–18 мес</span>
-      </div>
-    </div>
-<span class="textstyle3"><br/></span>  </div>
-<div class="textstyle20">
-<span class="textstyle54">⭐</span><span class="textstyle52">БАЗОВЫЙ (ЦЕЛЬ)<br/></span><span class="textstyle53">200<br/></span><span class="textstyle16">терминалов за 2026<br/></span>  </div>
-<div class="textstyle1">
-<span class="textstyle16">Выручка (продажа)<br/></span><span class="textstyle18">560 млн ₸<br/></span><span class="textstyle16">Себестоимость<br/></span><span class="textstyle28">340 млн ₸<br/></span><span class="textstyle16">Валовая прибыль<br/></span><span class="textstyle15">220 млн ₸<br/></span><span class="textstyle16">Маржа<br/></span><span class="textstyle18">39%<br/></span><span class="textstyle16">SaaS в год<br/></span><span class="textstyle15">+120 млн ₸<br/></span><span class="textstyle16">Возврат инвестиций<br/></span><span class="textstyle15">~8–12 мес<br/></span>  </div>
-<div class="textstyle20">
-  <div id="container_42421574">
-    <div class="textstyle20">
-      <span class="textstyle52">ОПТИМИСТИЧНЫЙ</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_44be7e37">
-    <div class="textstyle20">
-      <span class="textstyle53">400+</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_4e40bfb1">
-    <div class="textstyle20">
-      <span class="textstyle16">терминалов за 2026</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  <div id="container_7bb1e9eb">
-    <div class="textstyle1">
-      <span class="textstyle16">Выручка (продажа)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_48f3408b">
-    <div class="textstyle1">
-      <span class="textstyle18">1.1 млрд ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_33b61be9">
-    <div class="textstyle1">
-      <span class="textstyle16">Себестоимость</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_18f60e4e">
-    <div class="textstyle1">
-      <span class="textstyle28">680 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4ceaaf5d">
-    <div class="textstyle1">
-      <span class="textstyle16">Валовая прибыль</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2a660e09">
-    <div class="textstyle1">
-      <span class="textstyle15">420 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_75161c14">
-    <div class="textstyle1">
-      <span class="textstyle16">Маржа</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_67eb06f0">
-    <div class="textstyle1">
-      <span class="textstyle18">38%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_41e6b0b5">
-    <div class="textstyle1">
-      <span class="textstyle16">SaaS в год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1fb801c5">
-    <div class="textstyle1">
-      <span class="textstyle15">+240 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_24077c0b">
-    <div class="textstyle1">
-      <span class="textstyle16">Возврат инвестиций</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_111e700c">
-    <div class="textstyle1">
-      <span class="textstyle15">~5–7 мес</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_2191c062">
-    <span class="textstyle9">
-      <span id="container_73d0649f">
-        <span class="textstyle9">
-          <span class="textstyle11">Сценарии инвестиций: 50 / 100 / 150 млн ₸</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6e4bea11">
-    <div class="textstyle1">
-      <span class="textstyle16">Три уровня запуска: от пилота до быстрого масштабирования. Цифры — ориентиры, структуру затрат можно адаптировать под сделку.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1ac8c230">
-    <div class="textstyle1">
-      <span class="textstyle29">50 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_56edb14b">
-    <div class="textstyle1">
-      <span class="textstyle2">Пилот и первые продажи</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_682b44c5">
-    <div id="container_682b44c5_padding" >
-      <div class="textstyle1">
-        <div id="container_7e2cf347">
+
+  <div class="section" id="cta">
+    <div class="card">
+      <div class="inner">
+        <h2>Для реализации планов по продажам требуются инвестиции</h2>
+        <p class="muted" style="margin-top:6px">
+          Что есть: Работающая SaaS-платформа с 200+ клиентами — есть. Партнёр-производитель железа — есть. Протокол с МЗРК — есть.
+          51 активный проект в Казахстане — есть. Команда — есть. Нужен только оборотный капитал под первую партию терминалов.
+        </p>
+
+        <div class="f-row" style="margin-top:14px">
+          <div class="f-card" style="border-color:rgba(212,168,67,.3);">
+            <div class="lbl">Инвестиции</div>
+            <div class="num">50–150 млн</div>
+            <div class="sub">тенге · размер инвестиции</div>
           </div>
-        <div id="container_19618dc">
-          <div class="textstyle1">
-            <span class="textstyle5">Первая партия: ~25 терминалов</span>
-            </div>
+          <div class="f-card">
+            <div class="lbl">Срок</div>
+            <div class="num">12–18</div>
+            <div class="sub">месяцев до возврата</div>
           </div>
-        <div id="container_5c44bb35">
-          </div>
-        <div id="container_5d7c9678">
-          <div class="textstyle1">
-            <span class="textstyle5">Фокус: 1–2 региона и 3–5 якорных клиентов</span>
-            </div>
-          </div>
-        <div id="container_dda6983">
-          </div>
-        <div id="container_15c2670">
-          <div class="textstyle1">
-            <span class="textstyle5">Приоритет: интеграции, кейсы, отладка в поле</span>
-            </div>
+          <div class="f-card">
+            <div class="lbl">Структура</div>
+            <div class="num">Гибко</div>
+            <div class="sub">equity, конвертируемый займ или смешанная структура</div>
           </div>
         </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_20ef5782">
-    <div class="textstyle1">
-      <span class="textstyle29">100 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_69fc78a3">
-    <div class="textstyle1">
-      <span class="textstyle2">Базовый рост (рекомендуемый)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_583d859e">
-    <div id="container_583d859e_padding" >
-      <div class="textstyle1">
-        <div id="container_1385738c">
-          </div>
-        <div id="container_789a1cc5">
-          <div class="textstyle1">
-            <span class="textstyle5">Первая партия: ~50 терминалов</span>
-            </div>
-          </div>
-        <div id="container_554d35e4">
-          </div>
-        <div id="container_75411cd5">
-          <div class="textstyle1">
-            <span class="textstyle5">Фокус: 3–4 региона и 10–15 клиентов</span>
-            </div>
-          </div>
-        <div id="container_525e55f1">
-          </div>
-        <div id="container_3b5824b5">
-          <div class="textstyle1">
-            <span class="textstyle5">Команда внедрения/продаж + ускорение ЕХМД-интеграций</span>
-            </div>
-          </div>
+
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px">
+          <a class="btn primary" href="#">Partnership &amp; Deployment (Request deck)</a>
+          <a class="btn" href="#">Book a 30-min call</a>
         </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2523b6a4">
-    <div class="textstyle1">
-      <span class="textstyle29">150 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_fe60690">
-    <div class="textstyle1">
-      <span class="textstyle2">Ускоренное масштабирование</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7fa0580">
-    <div id="container_7fa0580_padding" >
-      <div class="textstyle1">
-        <div id="container_69bbdfaf">
-          </div>
-        <div id="container_3b9eeab1">
-          <div class="textstyle1">
-            <span class="textstyle5">Первая партия: ~75 терминалов</span>
-            </div>
-          </div>
-        <div id="container_548e0a0">
-          </div>
-        <div id="container_41f3a90">
-          <div class="textstyle1">
-            <span class="textstyle5">Фокус: 5–7 регионов и 20+ клиентов</span>
-            </div>
-          </div>
-        <div id="container_4791130d">
-          </div>
-        <div id="container_405e9f4b">
-          <div class="textstyle1">
-            <span class="textstyle5">Запас на повторные партии + более агрессивные продажи</span>
-            </div>
-          </div>
+
+        <div class="footer">
+          <div>Контакт: <kbd>vasiliy@…</kbd></div>
+          <div>Обновлено: 2026</div>
         </div>
-      <div style="clear:both"></div>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7fa3186f">
-    <div class="textstyle1">
-      <span class="textstyle16">Условия сделки: equity, конвертируемый займ или смешанная структура.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_186dac78">
-    <span class="textstyle9">
-      <span id="container_7917f30d">
-        <span class="textstyle9">
-          <span class="textstyle11">Четыре потока дохода</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_389374b0">
-    <div class="textstyle1">
-      <span class="textstyle16">Не просто «продал железо». Каждый терминал генерирует доход весь срок жизни.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_408809a6">
-    <div class="textstyle1">
-      <span class="textstyle55"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_20957a">
-    <div class="textstyle1">
-      <span class="textstyle2">Hardware sale</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_34198f56">
-    <div class="textstyle1">
-      <span class="textstyle5">Разовая продажа · маржа 39%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_42d56d81">
-    <div class="textstyle1">
-      <span class="textstyle55">☁️</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_e5a7e35">
-    <div class="textstyle1">
-      <span class="textstyle2">SaaS-подписка MedContact</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2401bf75">
-    <div class="textstyle1">
-      <span class="textstyle5">50 000 ₸/мес — облако, обновления, поддержка</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_52471fc5">
-    <div class="textstyle1">
-      <span class="textstyle55"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_55a17e85">
-    <div class="textstyle1">
-      <span class="textstyle2">Реклама на экранах</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_45d4a07e">
-    <div class="textstyle1">
-      <span class="textstyle5">6–10 тыс. пациентов/мес · до 40% внимания</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_c88cb80">
-    <div class="textstyle1">
-      <span class="textstyle55"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_c264c71">
-    <div class="textstyle1">
-      <span class="textstyle2">Апсейл модулей и интеграций</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_38b0c03c">
-    <div class="textstyle1">
-      <span class="textstyle5">ИИ-триаж, аналитика, спец. конфигурации, МЗРК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_ecfd4a9">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_7c221dc2">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">07 — СТРАТЕГИЧЕСКИЙ УРОВЕНЬ<br/></span>
-  <div id="container_4ea13f71">
-    <div class="textstyle1">
-      <span class="textstyle55">🇰</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_36fa13a2">
-    <div class="textstyle1">
-      <span class="textstyle6">МЗРК × ЕХМД × ИИ — НАЦИОНАЛЬНЫЙ МАСШТАБ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-<h2 id="heading_2ef8c561">Наши терминалы —<br/> компонент национальной<br/> архитектуры здравоохранения.</h2><span class="textstyle3"><br/></span><span class="textstyle7">Министерство здравоохранения строит ЕНКПЗ — Единую национальную коммуникационную платформу здравоохранения. Наши терминалы — один из трёх ключевых компонентов этой архитектуры. Встреча с МЗРК прошла 15 февраля 2026.<br/></span>  <div id="container_446844cb">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_1a09d5d2">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_6203ce5e">
-    <span class="textstyle9">
-      <span id="container_45751897">
-        <span class="textstyle9">
-          <span class="textstyle11">Модуль 1: ИИ-контакт-центр</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3cd01b2c">
-    <div class="textstyle1">
-      <span class="textstyle12">Голосовой ИИ-оператор, обзвон прикреплённого населения по скринингам, вакцинации, ОСМС. Уже работает.</span>
-      </div>
-    </div>
-  <div id="container_180d507a">
-    <div class="textstyle1">
-      <span class="textstyle4">MedContact AI обеспечивает этот модуль.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3dbd9fa6">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_5ce5e472">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_29be270f">
-    <span class="textstyle9">
-      <span id="container_258ae772">
-        <span class="textstyle9">
-          <span class="textstyle11">Модуль 2: Цифровые кампании</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_628d6fa1">
-    <div class="textstyle1">
-      <span class="textstyle12">Автоматические кампании по профилактике, ИИ-приоритизация групп риска, прогнозирование неявок.</span>
-      </div>
-    </div>
-  <div id="container_4b6c1449">
-    <div class="textstyle1">
-      <span class="textstyle4">Работает у 51 клиента в РК.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6d2a5182">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_2eead43f">
-    <div class="textstyle1">
-      <span class="textstyle31"></span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_3f4c0ce8">
-    <span class="textstyle9">
-      <span id="container_44bff0ea">
-        <span class="textstyle9">
-          <span class="textstyle11">Модуль 3: Наши терминалы</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6d355a35">
-    <div class="textstyle1">
-      <span class="textstyle12">Физические точки в МО — запись, ОСМС, очередь, голосовой ИИ-ассистент, официальный контент МЗ.</span>
-      </div>
-    </div>
-  <div id="container_7e06e142">
-    <div class="textstyle1">
-      <span class="textstyle4">Это именно то, для чего нужны инвестиции.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_3362f738">
-    <span class="textstyle9">
-      <span id="container_f2642b0">
-        <span class="textstyle9">
-          <span class="textstyle30">Что даёт статус партнёра МЗРК</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7fb95a17">
-    <div class="textstyle1">
-      <span class="textstyle42">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7a7266e8">
-    <div class="textstyle1">
-      <span class="textstyle2">Включение в приказ по минимальному оснащению МО</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1c3cedee">
-    <div class="textstyle1">
-      <span class="textstyle5">Если войдём — терминал станет обязательной закупкой для 11 000 объектов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_75577314">
-    <div class="textstyle1">
-      <span class="textstyle42">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2e314ff6">
-    <div class="textstyle1">
-      <span class="textstyle2">Официальный контент МЗ РК на экранах</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_67afd803">
-    <div class="textstyle1">
-      <span class="textstyle5">Государственный информационный ресурс = дополнительный доход и статус</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1eacc0ae">
-    <div class="textstyle1">
-      <span class="textstyle42">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2362e0f4">
-    <div class="textstyle1">
-      <span class="textstyle2">ЕХМД-интеграция по государственному регламенту</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1a64642a">
-    <div class="textstyle1">
-      <span class="textstyle5">Непреодолимый барьер для российских конкурентов, которые пойдут следом</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6cb27911">
-    <div class="textstyle1">
-      <span class="textstyle6">ПОТЕНЦИАЛ «МЗРК-СЦЕНАРИЯ»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_49f5e897">
-    <div class="textstyle1">
-      <span class="textstyle16">Объектов здравоохранения РК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_76a8a98e">
-    <div class="textstyle1">
-      <span class="textstyle2">~11 000</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2ebe89de">
-    <div class="textstyle1">
-      <span class="textstyle16">Минимум 1 терминал на объект</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_195b8955">
-    <div class="textstyle1">
-      <span class="textstyle18">~11 000 ед.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_62a3e233">
-    <div class="textstyle1">
-      <span class="textstyle16">При оптовой цене 2 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_759eeb3a">
-    <div class="textstyle1">
-      <span class="textstyle18">~22 млрд ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7167da72">
-    <div class="textstyle1">
-      <span class="textstyle16">SaaS-поток (50 тыс × 12 × 11 тыс)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_44fa4bf3">
-    <div class="textstyle1">
-      <span class="textstyle15">6.6 млрд ₸/год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5388adbe">
-    <div class="textstyle1">
-      <span class="textstyle15">Протокол встречи с МЗРК · 15 февраля 2026:</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2d7aefb0">
-    <div class="textstyle1">
-      <span class="textstyle16">Министр поддержал. Создаётся рабочая группа. Запланировано выступление на коллегии МЗ.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3290c93b">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">08 — ТРЕКШН<br/></span>
-<h2 id="heading_4f3b9860">Не теория.<br/> Живые результаты прямо сейчас.</h2>  <span class="textstyle3"><br/></span>
-  <div id="container_2c316cf7">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_749005ad">
-    <div class="textstyle1">
-      <span class="textstyle33">51</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_205b2755">
-    <span class="textstyle9">
-      <span id="container_194f07c2">
-        <span class="textstyle9">
-          <span class="textstyle11">активный проект в РК</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_19a5be1b">
-    <div class="textstyle1">
-      <span class="textstyle12">MedContact AI в 12 регионах РК, ~50 в процессе заключения договоров</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_72666c78">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_1b5934ca">
-    <div class="textstyle1">
-      <span class="textstyle32">+35–45%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_7a44adfa">
-    <span class="textstyle9">
-      <span id="container_6d69cc75">
-        <span class="textstyle9">
-          <span class="textstyle11">рост посещаемости</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_17ce82b7">
-    <div class="textstyle1">
-      <span class="textstyle12">профилактических мероприятий у клиентов после внедрения платформы</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_febe872">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_469737ec">
-    <div class="textstyle1">
-      <span class="textstyle34">−40%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_27d6d2e7">
-    <span class="textstyle9">
-      <span id="container_f1bb4dd">
-        <span class="textstyle9">
-          <span class="textstyle11">неявок на приём</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2b9d3e14">
-    <div class="textstyle1">
-      <span class="textstyle12">средний показатель по клиентам MedContact (медицинская специализация платформы)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_32760113">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_4fe36066">
-    <div class="textstyle1">
-      <span class="textstyle35">3 млн+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <h3 id="heading_730365ad">
-    <span class="textstyle9">
-      <span id="container_38889a1f">
-        <span class="textstyle9">
-          <span class="textstyle11">контактов с пациентами/год</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6792b054">
-    <div class="textstyle1">
-      <span class="textstyle12">обработано через платформу MedContact AI за последний год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_285ba244">
-    <div class="textstyle1">
-      <span class="textstyle52">КЕЙС: ПОЛИКЛИНИКА №3, АЛМАТЫ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_73f5ad15">
-    <div class="textstyle1">
-      <span class="textstyle56">62 000</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_d632942">
-    <div class="textstyle1">
-      <span class="textstyle5">прикреплённых пациентов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_ecf1ffd">
-    <div class="textstyle1">
-      <span class="textstyle16">Неактивных до</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3829afc0">
-    <div class="textstyle1">
-      <span class="textstyle28">~8 000+</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7a5e229e">
-    <div class="textstyle1">
-      <span class="textstyle16">Неактивных после</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_20a6032b">
-    <div class="textstyle1">
-      <span class="textstyle15">820 ✓ (−10×)</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_726469b5">
-    <div class="textstyle1">
-      <span class="textstyle57">КЕЙС: ЖАМБЫЛСКАЯ ОБЛАСТЬ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4c7f1a87">
-    <div class="textstyle1">
-      <span class="textstyle56">1.1 млн</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3cb34d32">
-    <div class="textstyle1">
-      <span class="textstyle5">жителей, 50%+ сельские</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5b709790">
-    <div class="textstyle1">
-      <span class="textstyle16">Потери ФСМС/год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_25882d73">
-    <div class="textstyle1">
-      <span class="textstyle28">300–500 млн ₸</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_14a4acdb">
-    <div class="textstyle1">
-      <span class="textstyle16">Эффект от внедрения</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7eb07246">
-    <div class="textstyle1">
-      <span class="textstyle15">350–700 млн ₸/год</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_36bbb0d2">
-    <div class="textstyle1">
-      <span class="textstyle5">Справка подготовлена для акимата · 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_37d68671">
-    <div class="textstyle1">
-      <span class="textstyle58">КЕЙС: ПЕРИНАТАЛЬНЫЙ ЦЕНТР, ЕСИК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_75f4c5f9">
-    <div class="textstyle1">
-      <span class="textstyle16">Специализированная конфигурация для акушерства</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1f90c2b3">
-    <div class="textstyle1">
-      <span class="textstyle8">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_33f1cf14">
-    <div class="textstyle1">
-      <span class="textstyle59">Кнопка «Мне срочно» — ИИ-триаж</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_48a744cd">
-    <div class="textstyle1">
-      <span class="textstyle8">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5d32fd98">
-    <div class="textstyle1">
-      <span class="textstyle59">Предвизитный анамнез через WhatsApp / QR</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_208b3611">
-    <div class="textstyle1">
-      <span class="textstyle8">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_72539f6a">
-    <div class="textstyle1">
-      <span class="textstyle59">Маршрутизация экстренных случаев врачу</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_11345efa">
-    <div class="textstyle1">
-      <span class="textstyle8">✓</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_545631e0">
-    <div class="textstyle1">
-      <span class="textstyle59">Двуязычный интерфейс каз/рус</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6a130358">
-    <div class="textstyle1">
-      <span class="textstyle60">Не просто «терминал» — полноценное медицинское ПО</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3ee2dc5b">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_5b4ec5d7">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">09 — ПОШАГОВЫЙ ПЛАН<br/></span>
-<h2 id="heading_68e4d794">От инвестиции<br/> до первой выручки — 2 месяца.</h2>  <span class="textstyle3"><br/></span>
-  <div id="container_770be633">
-    <div class="textstyle1">
-      <span class="textstyle61">1</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_e7c4b2b">
-    <div class="textstyle1">
-      <span class="textstyle52">АПРЕЛЬ–МАЙ 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7d1d137f">
-    <div class="textstyle1">
-      <span class="textstyle4">Финализация продукта и подготовка к выходу</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3b6532f">
-    <div class="textstyle1">
-      <span class="textstyle16">Доработка трёх версий терминалов совместно с партнёром-производителем. Сертификация оборудования. Интеграционный шлюз MedContact ↔ ЕХМД/DamuMed — тест в реальных условиях. КП, маркетинговые материалы, юридическая структура для госзакупок.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3c899332">
-    <div class="textstyle1">
-      <span class="textstyle57">Продукт к демо</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_383a91fb">
-    <div class="textstyle1">
-      <span class="textstyle57">Договор с производителем</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_243052b">
-    <div class="textstyle1">
-      <span class="textstyle57">ЕХМД-шлюз протестирован</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_10a7ae43">
-    <div class="textstyle1">
-      <span class="textstyle61">2</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_709a2675">
-    <div class="textstyle1">
-      <span class="textstyle52">ИЮНЬ 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_f3ae3e4">
-    <div class="textstyle1">
-      <span class="textstyle4">Пилотные установки — первые реальные данные</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_70778ff7">
-    <div class="textstyle1">
-      <span class="textstyle16">3–5 терминалов в клиниках Алматы (часть из уже существующих клиентов MedContact). Отработка интеграции, сбор метрик, NPS. Презентации для акиматов и сетей. Выступление на коллегии МЗ РК с демонстрацией оборудования.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7623be0a">
-    <div class="textstyle1">
-      <span class="textstyle57">5 пилотных установок</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_172482e9">
-    <div class="textstyle1">
-      <span class="textstyle57">Кейс с метриками</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_126919c">
-    <div class="textstyle1">
-      <span class="textstyle57">2+ LOI от клиентов</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1284f1d9">
-    <div class="textstyle1">
-      <span class="textstyle57">Коллегия МЗ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3bb9880c">
-    <div class="textstyle1">
-      <span class="textstyle61">3</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5bb6e56f">
-    <div class="textstyle1">
-      <span class="textstyle52">ИЮЛЬ–СЕНТЯБРЬ 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1613634a">
-    <div class="textstyle1">
-      <span class="textstyle4">Первая серийная партия · активные продажи</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_14b62aa2">
-    <div class="textstyle1">
-      <span class="textstyle16">45–50 терминалов. Алматы, Астана, Шымкент, Караганда. Продажи существующим клиентам MedContact (минимальный CAC). Тендеры на portal med.ecc.kz. Команда: 3 менеджера, 3 инженера внедрения, 2 разработчика интеграций.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_bee57fb">
-    <div class="textstyle1">
-      <span class="textstyle57">50 терминалов установлено</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_60ff4218">
-    <div class="textstyle1">
-      <span class="textstyle57">~140 млн ₸ выручки</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5ee6badb">
-    <div class="textstyle1">
-      <span class="textstyle57">4 города</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_826472f">
-    <div class="textstyle1">
-      <span class="textstyle61">4</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3d121fc8">
-    <div class="textstyle1">
-      <span class="textstyle52">ОКТЯБРЬ–НОЯБРЬ 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2b5dd9b6">
-    <div class="textstyle1">
-      <span class="textstyle4">Вторая партия · региональный охват</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2e6d0eef">
-    <div class="textstyle1">
-      <span class="textstyle16">Ещё 40–50 терминалов. Регионы: ВКО, Туркестан, Актобе, Жамбыл (уже есть контакт с акиматом). Запуск аренды для госструктур. Рамочные договоры с сетями Mediker, Interteach, КДЛ Олимп.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7e1596ff">
-    <div class="textstyle1">
-      <span class="textstyle57">90–100 терминалов итого</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6065bfc0">
-    <div class="textstyle1">
-      <span class="textstyle57">~252 млн ₸ выручки</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7b21b9aa">
-    <div class="textstyle1">
-      <span class="textstyle57">SaaS 4.5 млн ₸/мес</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_13ce9bc0">
-    <div class="textstyle1">
-      <span class="textstyle61">5</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_56dcc34b">
-    <div class="textstyle1">
-      <span class="textstyle52">ДЕКАБРЬ 2026</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7de76b03">
-    <div class="textstyle1">
-      <span class="textstyle4">Итоги года · подготовка к масштабированию 2027</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_159fc219">
-    <div class="textstyle1">
-      <span class="textstyle16">Анализ результатов. Публичные кейсы. Переговоры с инвесторами Series A. Дорожная карта 2027: ИИ-модули в терминале, выход на Узбекистан/Кыргызстан через AC Solutions-сеть, масштаб 500–1000 терминалов.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_59726155">
-    <div class="textstyle1">
-      <span class="textstyle57">Возврат инвестиций</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_178ca817">
-    <div class="textstyle1">
-      <span class="textstyle57">Стабильный SaaS-поток</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_19869301">
-    <div class="textstyle1">
-      <span class="textstyle57">Переговоры по МЗРК</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_68c5db03">
-    <div class="textstyle1">
-      <span class="textstyle57">Series A prep</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_79d91fbb">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_6d3d47eb">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">КРАТКИЕ УСЛОВИЯ — МОДЕЛЬ «МЕДТЕРМИНАЛ» И «МЕДКОНТАКТ»<br/></span>
-<h2 id="heading_71763de1">Простое правило, которое убирает конфликт интересов.</h2><span class="textstyle3"><br/></span><span class="textstyle7">Цель: убрать конфликт интересов за счёт простого правила:</span><span class="textstyle11">«Медтерминал» = там, где есть совместная ценность в продукте/железе.«МедКонтакт» = работы, внедрение и сопровождение ПО</span><span class="textstyle7">(кроме случаев с постгарантийным сервисом железа).<br/></span>  <div id="container_640159cb">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <h3 id="heading_6bcac5f">
-    <span class="textstyle9">
-      <span id="container_5e3f0f01">
-        <span class="textstyle9">
-          <span class="textstyle11">Стороны</span>
-          </span>
-        </span>
-      </span>
-    </h3>
-  <span class="textstyle3"><br/></span>
-  <div id="container_68e5801c">
-    <div class="textstyle1">
-      <span class="textstyle37">50/50</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_409d663d">
-    <div class="textstyle1">
-      <span class="textstyle2">Совместное предприятие «Медтерминал»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7050d149">
-    <div class="textstyle1">
-      <span class="textstyle16">доли 50/50</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_d3c6902">
-    <div class="textstyle1">
-      <span class="textstyle8">100%</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_491320e1">
-    <div class="textstyle1">
-      <span class="textstyle2">ТОО «МедКонтакт»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_957d3fb">
-    <div class="textstyle1">
-      <span class="textstyle16">компания Василия</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_786178f">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">1) ЧТО ОТНОСИТСЯ К «МЕДТЕРМИНАЛ» (50/50)<br/></span>
-  <div id="container_151b973e">
-    <div class="textstyle1">
-      <span class="textstyle2">1.1. Разовая поставка «Терминал + базовое ПО»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_1006bf96">
-    <div class="textstyle1">
-      <span class="textstyle16">Если клиент покупает терминал и базовое ПО (то, без чего терминал не работает) — это сделка «Медтерминал».</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_385ed70">
-    <div class="textstyle1">
-      <span class="textstyle2">1.2. Модель «Терминал + ПО в рассрочку/по подписке»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_59f6ac0e">
-    <div class="textstyle1">
-      <span class="textstyle16">Если клиент платит регулярными платежами за пакет, где вместе идут терминал и ПО — это сделка «Медтерминал».</span>
-      </div>
-    </div>
-<span class="textstyle3"><br/></span><span class="textstyle38">2) ПРАВИЛО «ЕСЛИ КЛИЕНТ ПОКУПАЕТ ОТДЕЛЬНО СОПРОВОЖДЕНИЕ ЖЕЛЕЗА, ИЛИ ПО ПОСЛЕ ГАРАНТИИ»<br/></span>  <div id="container_19101694">
-    <div class="textstyle1">
-      <span class="textstyle28">Если клиент после гарантии покупает и сервис железа, и сопровождение ПО, то это Медтерминал.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3348bfb3">
-    <div class="textstyle1">
-      <span class="textstyle2">Если по отдельности:</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_129e96cf">
-    <div class="textstyle1">
-      <span class="textstyle15">•</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_290a47e7">
-    <div class="textstyle1">
-      <span class="textstyle16">строка/часть «сервис железа»</span>
-      </div>
-    </div>
-  <div id="container_12ba4c99">
-    <div class="textstyle1">
-      <span class="textstyle28">→</span>
-      </div>
-    </div>
-  <div id="container_5ff7ff23">
-    <div class="textstyle1">
-      <span class="textstyle2">«IDC»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5fa21954">
-    <div class="textstyle1">
-      <span class="textstyle15">•</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4eae8d89">
-    <div class="textstyle1">
-      <span class="textstyle16">строка/часть «сопровождение ПО»</span>
-      </div>
-    </div>
-  <div id="container_4144764f">
-    <div class="textstyle1">
-      <span class="textstyle28">→</span>
-      </div>
-    </div>
-  <div id="container_157c0a99">
-    <div class="textstyle1">
-      <span class="textstyle2">«МедКонтакт»</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_76018995">
-    <div class="textstyle1">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <span class="textstyle8">10 — РИСКИ<br/></span>
-<h2 id="heading_6dd9df32">Честно о рисках<br/> и как мы их снижаем.</h2>  <span class="textstyle3"><br/></span>
-  <div id="container_371e0482">
-    <div class="textstyle1">
-      <span class="textstyle62">ВЫСОКИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2a31f5bc">
-    <div class="textstyle1">
-      <span class="textstyle2">Долгий цикл госзакупок</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4b80de84">
-    <div class="textstyle1">
-      <span class="textstyle5">Государственные тендеры могут затягиваться на 6–18 месяцев. Бюджетные задержки.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_545459e4">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ Государство — параллельный трек. Базовый план — частные клиники (быстрые решения, свои бюджеты). Жамбыл и другие акиматы — бонус, не план.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3a68f4ac">
-    <div class="textstyle1">
-      <span class="textstyle62">ВЫСОКИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6f843507">
-    <div class="textstyle1">
-      <span class="textstyle2">Сложность интеграции МИС</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_533ad50b">
-    <div class="textstyle1">
-      <span class="textstyle5">38 поставщиков МИС. У каждого своё API. Задержки при нестандартных системах.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_7cf54beb">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ DamuMed = 80%+ рынка — уже интегрирован в MedContact. Универсальный адаптер для остальных. Риск снижен тем, что платформа уже работает у 51 клиента.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4e30dc32">
-    <div class="textstyle1">
-      <span class="textstyle63">СРЕДНИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_3d7c239c">
-    <div class="textstyle1">
-      <span class="textstyle2">Усиление локальных игроков или выход российских вендоров</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_108026d4">
-    <div class="textstyle1">
-      <span class="textstyle5">Альтернативные игроки могут добавить ЕХМД-интеграцию. TouchPlat/WSENS могут выйти на РК.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_b82068c">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ Наш барьер: статус партнёра МЗРК + госрегламент ЕХМД + 51 действующий клиент = переключение стоит клиентам дорого.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_4f09ae40">
-    <div class="textstyle1">
-      <span class="textstyle63">СРЕДНИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5650b71b">
-    <div class="textstyle1">
-      <span class="textstyle2">Курс и стоимость комплектующих</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_45daf2de">
-    <div class="textstyle1">
-      <span class="textstyle5">Экраны, процессоры — импорт. Курс USD/KZT влияет на себестоимость.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_485002de">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ Контракты с производителем с квартальной фиксацией. Буфер 10–15% в себестоимости. Плавающая наценка.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_2a892370">
-    <div class="textstyle1">
-      <span class="textstyle63">СРЕДНИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_50a13e40">
-    <div class="textstyle1">
-      <span class="textstyle2">Консерватизм клиник</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_6f1fad3d">
-    <div class="textstyle1">
-      <span class="textstyle5">«Нам не нужно» — стандартное возражение. Особенно в гос. МО.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_206323f4">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ У нас уже 51 живой проект в РК. Продаём существующим клиентам MedContact — доверие уже есть. Пилот за наш счёт снимает финансовый риск клиники.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_798ad10b">
-    <div class="textstyle1">
-      <span class="textstyle64">НИЗКИЙ</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5e0dcc77">
-    <div class="textstyle1">
-      <span class="textstyle2">Техническая надёжность</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_63aa47d2">
-    <div class="textstyle1">
-      <span class="textstyle5">Сбои терминалов в клиниках = репутационный ущерб.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_292ba1ab">
-    <div class="textstyle1">
-      <span class="textstyle8">✓ Партнёр производит с гарантией 12 мес. SLA 4 часа. Удалённый мониторинг всего парка через платформу MedContact.</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_62138d83">
-    <div class="textstyle20">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_196cc72e">
-    <div class="textstyle20">
-      <span class="textstyle7"><br/></span>
-      </div>
-    </div>
-  <div id="container_2b468753">
-    <div class="textstyle20">
-      <span class="textstyle8"><br/></span>
       </div>
     </div>
   </div>
-<div class="textstyle20">
-  <div id="container_46b4a8fe">
-    <div class="textstyle20">
-      <span class="textstyle8">ИНВЕСТИЦИОННОЕ ПРЕДЛОЖЕНИЕ</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-<h1 id="heading_b17ccdd">Для реализации планов по продажам&lt;br&gt;требуются инвестиции.</h1><span class="textstyle3"><br/></span>  </div>
-<div class="textstyle20">
-<span class="textstyle7">Что есть: Работающая SaaS-платформа с 200+ клиентами — есть. Партнёр-производитель железа — есть. Протокол с МЗРК — есть. 51 активный проект в Казахстане — есть. Команда — есть. Нужен только оборотный капитал под первую партию терминалов.<br/></span>  <div id="container_40f283b2">
-    <div class="textstyle20">
-      <span class="textstyle65">от 50 до 150 млн</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_15d9320b">
-    <div class="textstyle20">
-      <span class="textstyle5">тенге · размер инвестиции</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_52aad21a">
-    <div class="textstyle20">
-      <span class="textstyle66">12–18</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-  <span class="textstyle3"><br/></span>
-  </div>
-<div class="textstyle20">
-  <div id="container_16ceeaa9">
-    <div class="textstyle20">
-      <span class="textstyle5">месяцев до возврата</span>
-      </div>
-    </div>
-  </div>
-<div class="textstyle1">
-<span class="textstyle3"><br/></span>  </div>
-<div class="textstyle20">
-<span class="textstyle16">Условия: equity, конвертируемый займ или смешанная структура.<br/></span>  <div id="container_75259368">
-    <div class="textstyle20">
-      <span class="textstyle44"><a href="https://medcontact.nealkhis.com/" class="wsp672bb1f9">Живой продукт → medcontact.nealkhis.com</a></span>
-      </div>
-    </div>
-<span class="textstyle44"><a href="https://nealkhis.com/" class="wsp672bb1f9">Экосистема → nealkhis.com</a></span>  </div>
-<div class="textstyle1">
-<span class="textstyle3"><br/></span>  <div id="container_5160c3fd">
-    <div class="textstyle1">
-      <span class="textstyle18">MedContact AI · AC Solutions</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_50159793">
-    <div class="textstyle1">
-      <span class="textstyle5">medcontact.nealkhis.com · nealkhis.com</span>
-      </div>
-    </div>
-  <span class="textstyle3"><br/></span>
-  <div id="container_5df4f329">
-    <div class="textstyle1">
-      <span class="textstyle5">Конфиденциально · только для партнёров · 2026</span>
-      </div>
-    </div>
-  </div>
+
+</div>
+
+<footer>
+<div class="f-logo">MedContact AI · AC Solutions</div>
+<div>medcontact.nealkhis.com · nealkhis.com</div>
+<div>Конфиденциально · только для партнёров · 2026</div>
+</footer>
 </body>
 </html>
