@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Трансформация Проектного офиса BP Contact в Клиентский департамент MedContact.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#07080f;
+      --bg2:#0b1020;
+      --panel: rgba(255,255,255,0.04);
+      --panel2: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.10);
+      --border2: rgba(255,255,255,0.16);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.62);
+      --muted2: rgba(255,255,255,0.52);
+      --accent: #14b8a6; /* teal */
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --shadow: 0 20px 70px rgba(0,0,0,0.55);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .site-nav{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,8,15,.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .nav-logo{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-0.02em;
+    }
+    .logo-dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(20,184,166,0.14);
+    }
+    .logo-name{font-size: 15px; color: rgba(255,255,255,0.92);}
+    .logo-ai{color: var(--accent);}
+
+    .nav-links{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
+    .nav-link{font-size:.9rem; font-weight:650; color: rgba(255,255,255,0.70); padding:8px 10px; border-radius:10px; border:1px solid transparent;}
+    .nav-link:hover{color:#fff; border-color: rgba(255,255,255,0.10); background: rgba(255,255,255,0.03);}
+
+    .nav-actions{display:flex; align-items:center; gap:10px;}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:750; border-radius:10px; padding:10px 14px; font-size:.88rem; border:1px solid rgba(255,255,255,0.16);}
+    .btn.btn-primary{background: var(--accent); color:#00110e; border-color: rgba(20,184,166,0.55);}
+    .btn.btn-primary:hover{filter:brightness(1.05);}
+    .btn.btn-ghost{background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.78);}
+    .btn.btn-ghost:hover{border-color: rgba(255,255,255,0.40); color:#fff;}
+
+    .nav-mobile-toggle{display:none; background:none; border:0; padding:8px; cursor:pointer;}
+    .nav-mobile-toggle span{display:block; width:22px; height:2px; background: rgba(255,255,255,0.72); margin:5px 0; border-radius:2px;}
+    @media (max-width:980px){
+      .nav-links{display:none}
+      .nav-mobile-toggle{display:inline-block}
+    }
+
+    .mobile-nav{
+      display:none;
+      position:fixed;
+      top:60px;
+      left:0; right:0;
+      background: rgba(7,8,15,.98);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding: 14px 18px 18px;
+      z-index:60;
+    }
+    .mobile-nav.open{display:block;}
+    .mobile-nav-link{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 12px;
+      color: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .mobile-nav-link:hover{border-color: rgba(255,255,255,0.20); color:#fff;}
+
+    main{background:
+      radial-gradient(900px 520px at 70% -10%, rgba(20,184,166,0.16), transparent 55%),
+      radial-gradient(900px 520px at -10% 18%, rgba(59,130,246,0.14), transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg2) 60%, #06070d 100%);
+    }
+
+    .hero-section{padding: 54px 0 18px;}
+    .hero-inner{max-width: var(--max); margin:0 auto; padding: 0 18px; display:grid; grid-template-columns: 1.05fr .95fr; gap:22px; align-items:stretch;}
+    @media (max-width:980px){.hero-inner{grid-template-columns:1fr}}
+    .hero-text{padding: 6px 2px;}
+    .hero-badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 14px;}
+    .hero-badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius: 999px; border:1px solid rgba(20,184,166,0.28); background: rgba(20,184,166,0.10); color: rgba(255,255,255,0.86); font-weight: 800; font-size: .85rem;}
+    .hero-headline{font-size: 2.2rem; line-height:1.12; letter-spacing:-0.03em; margin: 0 0 12px;}
+    @media (max-width:980px){.hero-headline{font-size: 1.9rem;}}
+    .hero-sub{color: var(--muted); font-size: 1.02rem; line-height: 1.65; margin:0 0 16px; max-width: 84ch;}
+
+    .hero-trust-badge{display:flex; align-items:center; gap:10px; color: rgba(255,255,255,0.72); font-weight: 650; font-size: .92rem; margin: 12px 0 18px;}
+    .trust-dot{width:10px;height:10px;border-radius:999px;background: var(--green); box-shadow: 0 0 0 6px rgba(34,197,94,0.12);}
+
+    .hero-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top: 6px;}
+    .btn-hero-primary{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #00110e;
+      font-weight: 900;
+      font-size: .95rem;
+      border: 1px solid rgba(20,184,166,0.50);
+    }
+    .btn-hero-primary:hover{filter:brightness(1.05);}
+    .btn-hero-secondary{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      color: rgba(255,255,255,0.82);
+      font-weight: 800;
+      font-size: .95rem;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .btn-hero-secondary:hover{border-color: rgba(255,255,255,0.36); color:#fff;}
+
+    .hero-visual{display:flex; align-items:stretch; justify-content:stretch;}
+    .hero-dashboard-card{
+      width:100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .dashboard-card-header{display:flex; align-items:center; gap:8px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);}
+    .dash-dot{width:10px;height:10px;border-radius:999px; opacity:.9;}
+    .dash-dot.green{background: var(--green);}
+    .dash-dot.amber{background: var(--amber);}
+    .dash-dot.red{background: var(--red);}
+    .dash-title{margin-left: 6px; font-weight: 900; color: rgba(255,255,255,0.88);}
+    .dashboard-card-body{padding: 16px;}
+    .dash-stat-row{display:flex; justify-content:space-between; gap:12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);}
+    .dash-stat-row:last-child{border-bottom:0;}
+    .dash-stat-label{color: rgba(255,255,255,0.64); font-weight:650; font-size: .92rem;}
+    .dash-stat-value{color: rgba(255,255,255,0.92); font-weight: 900; font-size: .95rem;}
+    .dash-stat-value.green{color: var(--green);}
+    .dash-note{margin-top: 14px; color: rgba(255,255,255,0.52); font-size: .85rem; line-height:1.55;}
+
+    .trust-bar-section{padding: 16px 0 8px;}
+    .trust-bar-inner{max-width: var(--max); margin: 0 auto; padding: 0 18px; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07);}
+    .trust-bar-label{display:block; color: rgba(255,255,255,0.60); font-weight:650; font-size: .9rem; padding: 12px 0 2px;}
+    .trust-stats-row{display:flex; gap:14px; flex-wrap:wrap; padding: 10px 0 14px;}
+    .trust-stat-item{background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 10px 12px; min-width: 180px; flex: 1 1 180px;}
+    .trust-stat-value{display:block; font-weight: 900; font-size: 1.05rem;}
+    .trust-stat-label{display:block; color: rgba(255,255,255,0.62); font-size: .86rem; margin-top: 4px;}
+
+    .section-inner{max-width: var(--max); margin: 0 auto; padding: 54px 18px;}
+    .section-label-tag{display:inline-flex; align-items:center; gap:8px; padding: 7px 12px; border-radius: 999px; border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.70); font-weight: 800; font-size: .82rem;}
+    .section-heading{margin: 14px 0 12px; font-size: 1.75rem; letter-spacing: -0.02em;}
+    .section-sub-text{margin: 0 0 24px; color: var(--muted); line-height:1.65; max-width: 90ch;}
+
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap: 18px;}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;}
+    @media (max-width:980px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+    .card{background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.10); border-radius: 18px; padding: 18px; box-shadow: 0 14px 50px rgba(0,0,0,0.35);}
+    .card.soft{box-shadow:none; background: rgba(255,255,255,0.02);}
+    .card h3{margin:0 0 10px; font-size: 1.08rem; letter-spacing:-0.01em;}
+    .card p{margin:0; color: rgba(255,255,255,0.68); line-height:1.7;}
+    .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top: 14px;}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding: 7px 10px; border-radius: 999px; border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.78); font-weight: 750; font-size: .82rem;}
+    .pill.teal{border-color: rgba(20,184,166,0.30); background: rgba(20,184,166,0.10);}
+    .pill.green{border-color: rgba(34,197,94,0.26); background: rgba(34,197,94,0.08);}
+    .pill.blue{border-color: rgba(59,130,246,0.22); background: rgba(59,130,246,0.08);}
+    .pill.amber{border-color: rgba(245,158,11,0.22); background: rgba(245,158,11,0.08);}
+
+    .rule-list{margin: 0; padding-left: 18px; color: rgba(255,255,255,0.70); line-height:1.75;}
+    .rule-list li{margin: 7px 0;}
+
+    .table-wrap{overflow:auto; border-radius: 16px; border:1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.02);}
+    table{width:100%; border-collapse:collapse; min-width: 760px;}
+    th,td{padding: 12px 14px; text-align:left; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align:top; font-size: .95rem; line-height:1.55;}
+    th{color: rgba(255,255,255,0.72); font-size: .8rem; letter-spacing:.12em; text-transform:uppercase; background: rgba(255,255,255,0.03);}
+    tr:last-child td{border-bottom:0;}
+    .dim{color: rgba(255,255,255,0.60);}
+
+    .callout{border: 1px solid rgba(20,184,166,0.22); background: rgba(20,184,166,0.08); border-radius: 18px; padding: 16px 18px;}
+    .callout b{color:#fff;}
+    .callout p{margin:0; color: rgba(255,255,255,0.74);}
+
+    .divider{height:1px;background:rgba(255,255,255,0.08); margin: 16px 0;}
+
+    .site-footer{padding: 24px 18px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(7,8,15,.85);}
+    .footer-bottom-bar{max-width: var(--max); margin: 0 auto; color: rgba(255,255,255,0.56); font-size: .86rem; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .86rem; padding: 2px 8px; border-radius: 9px; border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);}
+  </style>
+</head>
+
+<body>
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <span class="logo-dot"></span>
+        <span class="logo-name">MedContact <span class="logo-ai">ai</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#contours" class="nav-link">2 контура</a>
+        <a href="#axes" class="nav-link">Оси K/S</a>
+        <a href="#kseg" class="nav-link">K1–K5</a>
+        <a href="#sseg" class="nav-link">S1–S5</a>
+        <a href="#assign" class="nav-link">Назначения</a>
+        <a href="#roles" class="nav-link">Роли</a>
+        <a href="#rhythm" class="nav-link">Ритмы</a>
+        <a href="#escal" class="nav-link">Эскалации</a>
+        <a href="#itspec" class="nav-link">Мини‑ТЗ</a>
+        <a href="#terminal" class="nav-link">Терминал без пакета</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#itspec" class="btn btn-ghost">В систему →</a>
+        <a href="#assign" class="btn btn-primary">Правила →</a>
+        <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#contours" class="mobile-nav-link">2 контура</a>
+    <a href="#axes" class="mobile-nav-link">Оси K/S</a>
+    <a href="#kseg" class="mobile-nav-link">K1–K5</a>
+    <a href="#sseg" class="mobile-nav-link">S1–S5</a>
+    <a href="#assign" class="mobile-nav-link">Назначения</a>
+    <a href="#roles" class="mobile-nav-link">Роли</a>
+    <a href="#rhythm" class="mobile-nav-link">Ритмы</a>
+    <a href="#escal" class="mobile-nav-link">Эскалации</a>
+    <a href="#itspec" class="mobile-nav-link">Мини‑ТЗ</a>
+    <a href="#terminal" class="mobile-nav-link">Терминал без пакета</a>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge-row">
+            <span class="hero-badge">🏥 Клиентский департамент MC · новый формат</span>
+          </div>
+          <h1 class="hero-headline">Трансформация Проектного офиса BP Contact в Клиентский департамент MedContact.ai</h1>
+          <p class="hero-sub">
+            Клиентский департамент = <b>2 контура</b> (внедрение/адаптация и развитие/деньги/ценность) + <b>2 оси</b> (K и S).
+            Мы разделяем ответственность так, чтобы не усложнить управление на вашем масштабе:
+            <b>на каждого клиента — один K</b>, <b>на каждый проект — один S</b>, дальше назначения делаются правилами “по таблице”.
+          </p>
+          <div class="hero-trust-badge">
+            <span class="trust-dot"></span>
+            1 клиент = 1 K · 1 проект = 1 S · назначения “по таблице”
+          </div>
+          <div class="hero-ctas">
+            <a href="#assign" class="btn-hero-primary">Открыть правила назначений →</a>
+            <a href="#itspec" class="btn-hero-secondary">Поля в систему →</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dash-dot green"></span>
+              <span class="dash-dot amber"></span>
+              <span class="dash-dot red"></span>
+              <span class="dash-title">Client Ops Dashboard (пример)</span>
+            </div>
+            <div class="dashboard-card-body">
+              <div class="dash-stat-row">
+                <span class="dash-stat-label">K (класс клиента)</span>
+                <span class="dash-stat-value green">K1–K5</span>
+              </div>
+              <div class="dash-stat-row">
+                <span class="dash-stat-label">S (класс проекта)</span>
+                <span class="dash-stat-value">S1–S5</span>
+              </div>
+              <div class="dash-stat-row">
+                <span class="dash-stat-label">PM назначается по</span>
+                <span class="dash-stat-value">S</span>
+              </div>
+              <div class="dash-stat-row">
+                <span class="dash-stat-label">Менеджер по успеху клиента (CSM) назначается по</span>
+                <span class="dash-stat-value">K</span>
+              </div>
+              <div class="dash-note">Это внутренний формат управления. Метрики и ритмы — ниже по разделам.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar-section">
+      <div class="trust-bar-inner">
+        <span class="trust-bar-label">Ключевые принципы трансформации</span>
+        <div class="trust-stats-row">
+          <div class="trust-stat-item">
+            <span class="trust-stat-value">2 контура</span>
+            <span class="trust-stat-label">Delivery / Value</span>
+          </div>
+          <div class="trust-stat-item">
+            <span class="trust-stat-value">2 оси</span>
+            <span class="trust-stat-label">K (клиент) / S (проект)</span>
+          </div>
+          <div class="trust-stat-item">
+            <span class="trust-stat-value">Роли по правилам</span>
+            <span class="trust-stat-label">PM ← S · Менеджер по успеху клиента (CSM) ← K</span>
+          </div>
+          <div class="trust-stat-item">
+            <span class="trust-stat-value">Эскалации</span>
+            <span class="trust-stat-label">“верхняя граница риска” + триггеры</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 CONTOURS -->
+    <section class="problems-section" id="contours">
+      <div class="section-inner">
+        <div class="section-label-tag">Клиентский департамент MC</div>
+        <h2 class="section-heading">2 контура: внедрение/адаптация и развитие/ценность</h2>
+        <p class="section-sub-text">
+          Контуры нужны, чтобы не было конфликтов “кто над кем”, и чтобы решения принимались быстро: delivery управляет delivery, коммерция управляет ценностью и деньгами.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Контур 1: внедрение &amp; адаптация (delivery)</h3>
+            <p>
+              Запуск, сроки, план работ, риски и договоренности по объему работ. Интеграции, кастом, неопределенность, стейкхолдеры, дедлайны и репутационный риск.
+              Цель — <b>Time-to-Value</b> (срок до первой ценности).
+            </p>
+            <div class="pill-row">
+              <span class="pill teal">PM</span>
+              <span class="pill blue">S‑сегмент</span>
+              <span class="pill amber">Риски</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Контур 2: развитие &amp; деньги &amp; ценность</h3>
+            <p>
+              Донесение ценности, вовлеченность, удовлетворенность, удержание, пролонгации, апсейлы, контроль рисков оплаты.
+              Цель — <b>NRR/GRR</b> (удержание выручки с ростом / без роста).
+            </p>
+            <div class="pill-row">
+              <span class="pill green">Менеджер по успеху клиента (CSM)</span>
+              <span class="pill teal">K‑сегмент</span>
+              <span class="pill amber">Prolongation</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="callout">
+          <p><b>Чтобы было просто на вашем масштабе:</b> на каждого клиента — один K, на каждый проект — один S. Дальше назначения делаются правилами “по таблице”.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AXES -->
+    <section class="platform-section" id="axes">
+      <div class="section-inner">
+        <div class="section-label-tag">Две оси</div>
+        <h2 class="section-heading">1) Две оси — зачем и как не усложнить</h2>
+        <div class="grid-2">
+          <div class="card soft">
+            <h3>Ось K — “важность/коммерческий класс клиента”</h3>
+            <ul class="rule-list">
+              <li>какого уровня <b>Менеджер по успеху клиента (CSM)</b> ставим,</li>
+              <li>как часто подключаем директора/СЕО,</li>
+              <li>какой режим удержания/пролонгации.</li>
+            </ul>
+            <div class="divider"></div>
+            <p><b>K</b> = про деньги, потенциал роста, стратегичность и управленческий уровень общения.</p>
+          </div>
+
+          <div class="card soft">
+            <h3>Ось S — “сложность/риск проекта (delivery)”</h3>
+            <ul class="rule-list">
+              <li>какого уровня <b>PM</b> ставим,</li>
+              <li>нужен ли тимлид ПМов/эскалации/стиринг,</li>
+              <li>какой ритм управления рисками.</li>
+            </ul>
+            <div class="divider"></div>
+            <p><b>S</b> = про интеграции, кастом, неопределенность, стейкхолдеров, дедлайны и репутационный риск.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- K SEG -->
+    <section class="proof-section" id="kseg">
+      <div class="section-inner">
+        <div class="section-label-tag">Сегментация клиентов</div>
+        <h2 class="section-heading">2) Коммерческая сегментация клиентов K1–K5 (без смешения со “сложностью”)</h2>
+        <p class="section-sub-text">
+          K — это только про коммерческий класс клиента. Сложность внедрения и риски delivery — это отдельная ось S.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:90px;">K</th>
+                <th style="width:260px;">Диапазон</th>
+                <th>Тип</th>
+                <th style="width:360px;">Правило</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>K1</b></td>
+                <td>до 6M ₸/год<br><span class="dim">(~до 500k ₸/мес)</span></td>
+                <td>Малые частные/гос (10–50 врачей)</td>
+                <td>Берём только если в системе отмечен потенциал роста до ≥700k ₸/мес или есть стратегическая причина.</td>
+              </tr>
+              <tr>
+                <td><b>K2</b></td>
+                <td>6–10M ₸/год<br><span class="dim">(~500–830k ₸/мес)</span></td>
+                <td>Средние клиники/небольшие сети (2–3 филиала, 50–100 врачей)</td>
+                <td>Массовый сегмент.</td>
+              </tr>
+              <tr>
+                <td><b>K3</b></td>
+                <td>12–20M ₸/год<br><span class="dim">(~1–1.7M ₸/мес)</span></td>
+                <td>Крупные/требовательные</td>
+                <td>Высокий потенциал расширения.</td>
+              </tr>
+              <tr>
+                <td><b>K4</b></td>
+                <td>20M+ ₸/год<br><span class="dim">(~1.7M ₸/мес+)</span></td>
+                <td>Якорные крупные сети/клиники</td>
+                <td>Выделенный Менеджер по успеху клиента (CSM) Senior.</td>
+              </tr>
+              <tr>
+                <td><b>K5</b></td>
+                <td>100M+ ₸/год<br><span class="dim">(~10M ₸/мес+)</span></td>
+                <td>Enterprise/gov/heavy: акиматы, Минздрав, региональные программы</td>
+                <td>Выделенный Менеджер по успеху клиента (CSM) Senior + директор CX как executive‑сопровождение + СЕО по триггерам/квартально.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- S SEG -->
+    <section class="platform-section" id="sseg">
+      <div class="section-inner">
+        <div class="section-label-tag">Сегментация проектов</div>
+        <h2 class="section-heading">3) Классификация проектов S1–S5 (включаем в систему)</h2>
+        <p class="section-sub-text">
+          Проект перед назначением получает оценку <b>сложности</b> и <b>приоритетности</b>, и на основе этого — S‑сегмент.
+        </p>
+
+        <div class="grid-2">
+          <div class="card soft">
+            <h3>Оценка сложности (факторы)</h3>
+            <ul class="rule-list">
+              <li>интеграции</li>
+              <li>кастомизация</li>
+              <li>стейкхолдеры</li>
+              <li>неопределенность</li>
+              <li>новизна</li>
+            </ul>
+          </div>
+          <div class="card soft">
+            <h3>Оценка приоритетности (факторы)</h3>
+            <ul class="rule-list">
+              <li>стратегичность</li>
+              <li>деньги</li>
+              <li>жёсткий дедлайн</li>
+              <li>политическая чувствительность</li>
+              <li>репутационный риск</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:90px;">S</th>
+                <th>Определение</th>
+                <th style="width:340px;">Комментарий</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>S1</b></td>
+                <td>Поставка терминала (до 3 единиц, без кастомизации ПО)</td>
+                <td>Минимальный delivery‑риск.</td>
+              </tr>
+              <tr>
+                <td><b>S2</b></td>
+                <td>Простой, типовой, низкоприоритетный: поставка терминалов с кастомизацией ПО</td>
+                <td>Есть настройки, но без высокой неопределенности.</td>
+              </tr>
+              <tr>
+                <td><b>S3</b></td>
+                <td>Либо сложный, либо приоритетный</td>
+                <td>Требуется более плотное управление.</td>
+              </tr>
+              <tr>
+                <td><b>S4</b></td>
+                <td>Сложный и приоритетный одновременно</td>
+                <td>Высокий риск → нужен старший PM.</td>
+              </tr>
+              <tr>
+                <td><b>S5</b></td>
+                <td>Высокая неопределенность или стратегическая новизна</td>
+                <td>Усиленный контур управления по умолчанию.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ASSIGN RULES -->
+    <section class="usecases-section" id="assign">
+      <div class="section-inner">
+        <div class="section-label-tag">Назначения</div>
+        <h2 class="section-heading">4) Правила назначения ролей (самая важная часть)</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>4.1. PM назначается по S‑сегменту (а не по K)</h3>
+            <ul class="rule-list">
+              <li><b>S1</b> → PM не требуется (ведет служба HelpDesk)</li>
+              <li><b>S2</b> → PM Junior / Middle (по загрузке)</li>
+              <li><b>S3</b> → PM Middle+</li>
+              <li><b>S4</b> → PM Senior</li>
+              <li><b>S5</b> → PM Senior + обязательное участие тимлида ПМов (в контуре управления)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>4.2. Менеджер по успеху клиента (CSM) назначается по K‑сегменту</h3>
+            <p class="dim" style="margin:0 0 10px;">(роль объединена — ок; финансовую рутину снимаем)</p>
+            <ul class="rule-list">
+              <li><b>K1</b> → Менеджер по успеху клиента (CSM) Middle (портфельный режим)</li>
+              <li><b>K2</b> → Менеджер по успеху клиента (CSM) Middle</li>
+              <li><b>K3</b> → Менеджер по успеху клиента (CSM) Senior</li>
+              <li><b>K4</b> → Выделенный Менеджер по успеху клиента (CSM) Senior</li>
+              <li><b>K5</b> → Выделенный Менеджер по успеху клиента (CSM) Senior + директор CX как executive‑сопровождение + СЕО по триггерам/квартально</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="card soft">
+          <h3>4.3. Участие руководства: правило “верхняя граница риска”</h3>
+          <ul class="rule-list">
+            <li><b>Тимлид ПМов</b> подключается, если S4/S5 (а также при срывах/эскалациях)</li>
+            <li><b>Директор CX</b> подключается, если K4/K5 (и top‑K3), а также если высокий риск оттока/конфликт/штрафы</li>
+            <li><b>СЕО</b>: K5 — планово раз в квартал по ключевым, плюс по триггерам (см. раздел 8)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ROLES -->
+    <section class="specialists-section" id="roles">
+      <div class="section-inner">
+        <div class="section-label-tag">Роли</div>
+        <h2 class="section-heading">5) Роли и границы ответственности (без конфликтов “кто над кем”)</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>PM (проектный менеджер)</h3>
+            <p>
+              Отвечает за delivery‑контур: план, сроки, риски, договоренности, объем работ (рамки проекта), управление стейкхолдерами по внедрению, качество запуска.
+            </p>
+            <div class="divider"></div>
+            <p><b>Не отвечает за:</b> апсейлы (допродажи), дебиторку, счета/акты, изменение коммерческих условий.</p>
+            <div class="divider"></div>
+            <p><b>Метрики PM:</b> Time‑to‑Value · On‑time Delivery · Implementation CSAT/NPS · Scope Creep %</p>
+          </div>
+
+          <div class="card">
+            <h3>Менеджер по успеху клиента (CSM) (ценность + коммерческий контур)</h3>
+            <p>
+              Отвечает за ценность и деньги: донесение ценности, вовлеченность, удовлетворенность, пролонгации, апсейлы, контроль рисков оплаты (как владелец результата).
+            </p>
+            <div class="divider"></div>
+            <p><b>Ограничения:</b> не обещает сроки без PM; не управляет delivery; не вмешивается в разработку.</p>
+            <div class="divider"></div>
+            <p><b>Метрики Менеджера по успеху клиента (CSM):</b> NRR · GRR · Renewal Rate · Expansion · Product/Usage Health · NPS</p>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="grid-2">
+          <div class="card soft">
+            <h3>Финансовый менеджер (исполнение финансовой рутины)</h3>
+            <p>
+              Исполняет операционку: счета, акты, сверки, реестр оплат, контроль дебиторки как процесс (вместе с Менеджером по успеху клиента (CSM) по эскалациям).
+              Важно: Менеджер по успеху клиента (CSM) — владелец результата “клиент оплатил и продлил”, финменеджер — исполнитель документооборота.
+            </p>
+          </div>
+          <div class="card soft">
+            <h3>Helpdesk (поддержка)</h3>
+            <p>
+              логистику/поставку ведёт партнёр; выезда/монтажа нет; Helpdesk контролирует подключение ПО, доступы, типовые инциденты (L1);
+              сложные интеграции/ошибки — на L2 (инженер/разработка) по регламенту.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RHYTHM -->
+    <section class="integrations-section" id="rhythm">
+      <div class="section-inner">
+        <div class="section-label-tag">Ритмы</div>
+        <h2 class="section-heading">6) Ритмы встреч и управление по стадиям (упрощённо и практично)</h2>
+        <p class="section-sub-text">
+          Стадии клиента в системе: 1) Внедрение · 2) Стабилизация (30–60 дней) · 3) Регулярная эксплуатация и рост · 4) Окно пролонгации (за 90–120 дней до конца).
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:260px;">Стадия</th>
+                <th>Ритм</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Внедрение</b></td>
+                <td>Еженедельно статус (PM ведёт), Менеджер по успеху клиента (CSM) присутствует минимум раз в 2 недели</td>
+              </tr>
+              <tr>
+                <td><b>Стабилизация (первые 30–60 дней)</b></td>
+                <td>Раз в 2 недели (PM + Менеджер по успеху клиента (CSM)), затем передача в “эксплуатацию”</td>
+              </tr>
+              <tr>
+                <td><b>Регулярная эксплуатация и рост</b></td>
+                <td>K1–K2: раз в месяц · K3: раз в месяц · K4–K5: раз в 2–4 недели (в зависимости от риска)</td>
+              </tr>
+              <tr>
+                <td><b>Окно пролонгации (за 90–120 дней)</b></td>
+                <td>QBR для K3–K5 раз в квартал (директор CX как executive + Менеджер по успеху клиента (CSM)), по K5 при необходимости — СЕО</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:18px;" class="card soft">
+          <h3>7) Как не путать “клиент K” и “проект S” в ежедневной работе</h3>
+          <ul class="rule-list">
+            <li>“Кто ведёт сроки и работы?” → смотри S → PM и тимлид ПМов при S4/S5</li>
+            <li>“Кто ведёт деньги/ценность/пролонгацию?” → смотри K → Менеджер по успеху клиента (CSM) и директор CX при K4/K5</li>
+            <li>“Кто подписывает/выставляет/сверяет?” → финменеджер</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESCALATIONS -->
+    <section class="faq-section" id="escal">
+      <div class="section-inner">
+        <div class="section-label-tag">Эскалации</div>
+        <h2 class="section-heading">8) Триггеры эскалаций (когда обязательно подключать руководителей)</h2>
+        <div class="card">
+          <ul class="rule-list">
+            <li>риск срыва срока &gt; X дней (зафиксировать порог, напр. 10 рабочих дней)</li>
+            <li>конфликт по объёму работ / клиент требует “бесплатно”</li>
+            <li>рост жалоб / резкое падение NPS</li>
+            <li>риск не‑пролонгации в ближайшие 120 дней</li>
+            <li>штрафы/политическая чувствительность/репутационный риск</li>
+            <li>проект S5 (по умолчанию)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IT SPEC -->
+    <section class="pricing-section-full" id="itspec" style="padding-top:0;">
+      <div class="section-inner" style="padding-top: 34px;">
+        <div class="section-label-tag">Система</div>
+        <h2 class="section-heading">9) Мини‑ТЗ для вашей информационной системы (обязательно добавить поля)</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Карточка клиента</h3>
+            <ul class="rule-list">
+              <li>K‑сегмент (K1–K5) — выпадающий список</li>
+              <li>Потенциал роста (да/нет + ожидаемый чек) — обязательное поле для K1</li>
+              <li>Дата окончания договора (для окна пролонгации)</li>
+              <li>Ответственный Менеджер по успеху клиента (CSM)</li>
+              <li>Ответственный директор (executive sponsor) (если K4/K5)</li>
+              <li>Здоровье клиента (зелёный/жёлтый/красный) + причина</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Карточка проекта</h3>
+            <ul class="rule-list">
+              <li>S‑сегмент (S1–S5) — выпадающий список</li>
+              <li>Оценка сложности (5 факторов, шкала 1–5)</li>
+              <li>Оценка приоритетности (5 факторов, шкала 1–5)</li>
+              <li>Стадия (внедрение/стабилизация/эксплуатация/пролонгация)</li>
+              <li>Ответственный PM</li>
+              <li>Тимлид ПМов в контуре (да/нет) автофлаг при S5</li>
+              <li>Риски (реестр) + дата следующего ревью</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="grid-2">
+          <div class="card soft">
+            <h3>Финансовый контур</h3>
+            <ul class="rule-list">
+              <li>Счёт/акт/оплата — ведёт финменеджер</li>
+              <li>Дебиторка (сумма, срок, статус)</li>
+              <li>Флаг “требуется эскалация Менеджера по успеху клиента (CSM)” (если просрочка &gt; N дней)</li>
+            </ul>
+          </div>
+
+          <div class="card soft">
+            <h3>Терминал (карточка “сделки/заказа терминала”)</h3>
+            <ul class="rule-list">
+              <li>Тип заказа: Терминал только (S0) / Терминал + пакет (S1–S5)</li>
+              <li>S‑сегмент: S1 / S2 / S3 / S4 / S5</li>
+              <li>PM required: да/нет (авто: S0 = нет)</li>
+              <li>Ответственный Helpdesk</li>
+              <li>K‑сегмент клиента (K1–K5) (подтягивается из карточки клиента)</li>
+              <li>Потенциал апгрейда (да/нет + ожидаемый чек)</li>
+              <li>Чек‑лист подключения (статусы: подготовка → подключено → тест → приемка)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="callout">
+          <p><b>Важно:</b> если K и S не заполнены в карточках — правила не работают. Поэтому поля должны быть обязательными.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERMINAL ONLY -->
+    <section class="final-cta-section" id="terminal" style="padding: 0 0 56px;">
+      <div class="section-inner" style="padding-top: 10px;">
+        <div class="section-label-tag">Терминал без пакета</div>
+        <h2 class="section-heading">10) Поставка терминала самообслуживания без пакета услуг</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Helpdesk (владелец операционного исполнения)</h3>
+            <ul class="rule-list">
+              <li>контроль готовности терминала к подключению (чек‑лист)</li>
+              <li>подключение/активация ПО</li>
+              <li>настройки по шаблону (типовые профили)</li>
+              <li>тест работоспособности (приемочный чек‑лист)</li>
+              <li>передача в поддержку (L1) после приемки</li>
+            </ul>
+          </div>
+
+          <div class="card soft">
+            <h3>Правило назначения</h3>
+            <p>
+              Заказ чисто на терминал самообслуживания без пакета услуг = <b>S0</b>. Проектного менеджера не требуется.
+              Сразу подключается Helpdesk, который занимается подключением терминала.
+              При этом Менеджер по успеху клиента (CSM) может назначаться разного уровня в зависимости от коммерческой ценности клиента по оси K.
+            </p>
+            <div class="divider"></div>
+            <div class="pill-row">
+              <span class="pill teal">S0 → PM нет</span>
+              <span class="pill green">K → уровень CSM</span>
+              <span class="pill amber">Helpdesk → владелец исполнения</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="hero-ctas">
+          <a href="#top" class="btn-hero-secondary">Наверх ↑</a>
+          <a href="#assign" class="btn-hero-primary">К правилам назначений →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom-bar">
+      <span>© 2026 MedContact.ai · Внутренний документ</span>
+      <span class="kbd">K — клиент · S — проект · назначения “по таблице”</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function() {
+      var mobileToggle = document.getElementById('mobileToggle');
+      var mobileNav = document.getElementById('mobileNav');
+      if (mobileToggle && mobileNav) {
+        mobileToggle.addEventListener('click', function() {
+          mobileNav.classList.toggle('open');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+          link.addEventListener('click', function() {
+            mobileNav.classList.remove('open');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
